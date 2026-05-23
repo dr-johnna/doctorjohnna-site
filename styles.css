@@ -956,6 +956,8 @@ section {
   flex-direction: column;
   gap: var(--space-3);
   max-width: 38rem;
+  padding-bottom: var(--space-5);
+  border-bottom: 2px solid var(--teal);
 }
 
 .contact-headline {
