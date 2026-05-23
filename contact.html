@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact · Dr. Johnna</title>
+  <meta name="description" content="Tell me where you are and where you want to go. I read every message myself.">
+
+  <meta property="og:title" content="Contact · Dr. Johnna">
+  <meta property="og:description" content="Tell me where you are and where you want to go. I read every message myself.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://doctorjohnna.com/contact">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+       HEADER — same as other pages
+       ============================================================ -->
+  <header class="site-header" data-theme="light">
+    <div class="header-bar">
+      <a href="/" class="wordmark" aria-label="Dr. Johnna, home">DR. JOHNNA</a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/about.html">About</a>
+        <a href="/work-with-me.html">Work With Me</a>
+        <a href="https://brandstudio.drjohnna.co" class="nav-external" target="_blank" rel="noopener">
+          Brand Studio <span class="external-icon" aria-hidden="true">↗</span>
+        </a>
+        <a href="/podcast">Podcast</a>
+      </nav>
+
+      <a href="/contact.html" class="pill-cta" aria-current="page">
+        Reach out <span class="plus-icon" aria-hidden="true">+</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================================
+         SECTION 1: REACH OUT (cream)
+         Hero + form in one section. Form action points to Formspree.
+
+         TO ACTIVATE: replace YOUR_FORM_ID in the form action URL below
+         with the actual Formspree form ID from formspree.io. The form
+         will then email submissions to j@doctorjohnna.com.
+         ============================================================ -->
+    <section class="contact-section" data-theme="light">
+
+      <div class="contact-intro">
+        <h1 class="contact-headline">Reach out.</h1>
+        <p class="contact-sub">
+          Tell me where you are and where you want to go. I read every message myself, and I'll write back.
+        </p>
+      </div>
+
+      <form action="https://formspree.io/f/mjgzoojj"
+            method="POST"
+            class="contact-form">
+
+        <!-- Subject line that appears in Dr. Johnna's inbox when a message comes in. -->
+        <input type="hidden" name="_subject" value="New message via doctorjohnna.com">
+
+        <!-- After-submit redirect is handled in script.js via AJAX submission to Formspree.
+             That avoids the paid-tier _next field. If JS is disabled the form falls back
+             to native submit and shows Formspree's default thank-you page. -->
+
+        <!-- Inline error message, hidden by default; shown by script.js if submission fails. -->
+        <div class="form-error" hidden id="form-error" role="alert">
+          Something went wrong sending your message. Please try again, or email
+          <a href="mailto:j@doctorjohnna.com" class="inline-link">j@doctorjohnna.com</a> directly.
+        </div>
+
+        <label class="form-field">
+          <span class="form-label">Who are you?</span>
+          <span class="form-hint">Share a little about yourself and your business. Links welcome.</span>
+          <textarea name="about_you" rows="4"></textarea>
+        </label>
+
+        <label class="form-field">
+          <span class="form-label">Name <em>*</em></span>
+          <input type="text" name="name" required autocomplete="name">
+        </label>
+
+        <label class="form-field">
+          <span class="form-label">Email <em>*</em></span>
+          <input type="email" name="email" required autocomplete="email">
+        </label>
+
+        <label class="form-field">
+          <span class="form-label">Where are you right now?</span>
+          <span class="form-hint">What's the current situation. Where things stand. What's on your mind.</span>
+          <textarea name="where_now" rows="4"></textarea>
+        </label>
+
+        <label class="form-field">
+          <span class="form-label">Where do you want to go?</span>
+          <span class="form-hint">What you're trying to build, change, or figure out.</span>
+          <textarea name="where_next" rows="4"></textarea>
+        </label>
+
+        <label class="form-field">
+          <span class="form-label">What have you tried?</span>
+          <span class="form-hint">Optional. Anything that worked, didn't, or you've been considering.</span>
+          <textarea name="what_tried" rows="3"></textarea>
+        </label>
+
+        <fieldset class="form-field form-field-group">
+          <legend class="form-label">What might I help with?</legend>
+          <span class="form-hint">Optional. Pick any that resonate, or skip.</span>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="interest[]" value="Brand Building">
+              <span>Brand Building</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="interest[]" value="AI Training">
+              <span>AI Training</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="interest[]" value="AI Integration">
+              <span>AI Integration</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="interest[]" value="Not sure yet">
+              <span>Not sure yet</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <label class="form-field">
+          <span class="form-label">Anything else?</span>
+          <span class="form-hint">Optional. Any context that would help me respond well.</span>
+          <textarea name="anything_else" rows="3"></textarea>
+        </label>
+
+        <!-- Honeypot field — hidden from real users, catches bots -->
+        <label class="form-honeypot" aria-hidden="true">
+          Don't fill this out: <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </label>
+
+        <button type="submit" class="pill-cta pill-cta-large form-submit">
+          Send <span class="plus-icon" aria-hidden="true">+</span>
+        </button>
+
+        <p class="form-note">
+          <em>I'll write back personally, within 3 business days.</em>
+        </p>
+      </form>
+
+      <div class="contact-direct">
+        <p>
+          Prefer email? <a href="mailto:j@doctorjohnna.com" class="inline-link">j@doctorjohnna.com</a>
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER — same as other pages
+       ============================================================ -->
+  <footer class="site-footer" data-theme="dark">
+
+    <div class="footer-bar">
+      <span class="footer-tagline">
+        <span class="accent-yellow">Identity first.</span> Strategy follows.<br>
+        Build from the inside out.
+      </span>
+      <span class="footer-meta">Dr. Johnna Consulting</span>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/work-with-me.html">Work With Me</a></li>
+          <li><a href="/podcast">Podcast</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Free</h5>
+        <ul>
+          <li><a href="/energyaudit">Energy Audit</a></li>
+          <li><a href="https://capacity.drjohnna.co">Hidden Capacity Diagnostic</a></li>
+          <li><a href="https://brandstudio.drjohnna.co">Identity Brand Studio</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:j@doctorjohnna.com">Email</a></li>
+          <li><a href="https://instagram.com/dr.johnna">Instagram</a></li>
+          <li><a href="https://linkedin.com/in/drjohnna">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/drjohnnabrynn">Facebook</a></li>
+          <li><a href="https://youtube.com/@drjohnna">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; 2026 Dr. Johnna Consulting LLC</span>
+      <span>
+        <a href="/privacy">Privacy</a>
+        ·
+        <a href="/terms">Terms</a>
+        ·
+        <a href="/disclaimer">Disclaimer</a>
+      </span>
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

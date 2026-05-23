@@ -1,0 +1,1612 @@
+/* ============================================================
+   DR. JOHNNA · doctorjohnna.com
+
+   Stylesheet for the homepage. Single file, no build step.
+
+   Passes:
+     1. Reset and base
+     2. Design tokens (colors, fonts, spacing, type scale)
+     3. Theme (light / dark / sand)
+     4. Typography
+     5. Layout primitives
+     6. Components (pill button, mono-style label, etc.)
+     7. Header (visible nav, no hamburger)
+     8. Hero (three-line varied-treatment headline)
+     9. Philosophy (single editorial quote)
+    10. About (credentials block + bio + headshot)
+    11. Services (three cards, no audience tracks)
+    12. Testimonials
+    13. Final CTA
+    14. Footer
+    15. Scroll reveal animations
+    16. Responsive
+    17. Reduced motion
+
+   Fonts: Switzer (Black/Bold/Medium/Regular) + DM Serif Display Italic.
+   No third font.
+   ============================================================ */
+
+
+/* ============================================================
+   1. RESET AND BASE
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Skip link. Hidden until focused. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 1rem 1.5rem;
+  z-index: 999;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+
+/* ============================================================
+   2. DESIGN TOKENS
+   ============================================================ */
+
+:root {
+  /* Surface colors */
+  --cream: oklch(0.99 0.005 80);    /* #FEFCF9 */
+  --ink: oklch(0.16 0.005 80);      /* #202020 */
+  --sand: oklch(0.92 0.02 80);
+
+  /* Accents. Teal on light/sand, yellow on dark. */
+  --teal: oklch(0.72 0.08 190);     /* #53C5B3 */
+  --yellow: oklch(0.94 0.16 105);   /* #F0F87C */
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 5rem;
+  --space-8: 8rem;
+
+  /* Section padding (fluid). Tightened from earlier drafts per feedback. */
+  --section-pad-y: clamp(3.5rem, 7vw, 6rem);
+  --section-pad-x: clamp(1.5rem, 5vw, 4rem);
+
+  /* Type scale (fluid). Smaller than earlier drafts per visual feedback. */
+  --type-hero: clamp(2rem, 5vw, 4rem);
+  --type-section: clamp(1.65rem, 3.5vw, 2.75rem);
+  --type-subhead: clamp(1.15rem, 1.8vw, 1.5rem);
+  --type-body: 1rem;
+  --type-lead: clamp(1rem, 1.3vw, 1.15rem);
+  --type-small: 0.875rem;
+  --type-label: 0.8rem;
+  --type-pull-quote: clamp(1.25rem, 2.4vw, 1.95rem);
+
+  /* Other */
+  --hairline: 1px;
+  --radius-pill: 999px;
+  --transition-fast: 200ms cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-slow: 600ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+
+/* ============================================================
+   3. THEME (light / dark / sand)
+   ============================================================ */
+
+[data-theme="light"] {
+  --surface: var(--cream);
+  --on-surface: var(--ink);
+  --accent: var(--teal);
+  background: var(--surface);
+  color: var(--on-surface);
+}
+
+[data-theme="dark"] {
+  --surface: var(--ink);
+  --on-surface: var(--cream);
+  --accent: var(--yellow);
+  background: var(--surface);
+  color: var(--on-surface);
+  line-height: 1.55;
+}
+
+[data-theme="sand"] {
+  --surface: var(--sand);
+  --on-surface: var(--ink);
+  --accent: var(--teal);
+  background: var(--surface);
+  color: var(--on-surface);
+}
+
+.accent-teal { color: var(--teal); }
+.accent-yellow { color: var(--yellow); }
+
+
+/* ============================================================
+   4. TYPOGRAPHY
+
+   Only two fonts on the site: Switzer for everything structural,
+   DM Serif Display Italic for editorial accents (hero line 3,
+   philosophy quote, testimonials). No third font.
+   ============================================================ */
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+p {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--type-body);
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+em, .editorial-italic {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Switzer Medium used wherever the old design called for a mono "label" feel.
+   Smaller, tighter-tracked, optionally uppercase. */
+.label {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--type-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   5. LAYOUT PRIMITIVES
+   ============================================================ */
+
+main {
+  display: block;
+}
+
+section {
+  padding: var(--section-pad-y) var(--section-pad-x);
+  position: relative;
+}
+
+.section-headline {
+  font-size: var(--type-section);
+  margin-bottom: var(--space-4);
+}
+
+.section-lead {
+  font-size: var(--type-lead);
+  line-height: 1.5;
+  max-width: 38rem;
+  margin-bottom: var(--space-6);
+}
+
+
+/* ============================================================
+   6. COMPONENTS
+   ============================================================ */
+
+/* Pill CTA — primary interactive element across the site.
+   Slim pill shape (less vertical padding) per visual feedback. */
+.pill-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  border: var(--hairline) solid currentColor;
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1.1rem;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.pill-cta .plus-icon,
+.pill-cta .arrow-icon {
+  display: inline-block;
+  transition: transform var(--transition-fast);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.pill-cta:hover,
+.pill-cta:focus-visible {
+  background: var(--on-surface);
+  color: var(--surface);
+}
+
+.pill-cta:hover .plus-icon,
+.pill-cta:focus-visible .plus-icon {
+  transform: rotate(45deg);
+}
+
+.pill-cta-large {
+  font-size: 1rem;
+  padding: 0.7rem 1.5rem;
+}
+
+/* Underlined text links */
+.text-link,
+.text-link-inline {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+}
+
+.text-link:hover,
+.text-link-inline:hover {
+  opacity: 1;
+}
+
+/* Custom focus ring */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+
+/* ============================================================
+   7. SITE HEADER (visible nav)
+
+   Wordmark left, nav center, primary CTA right.
+   Mobile: nav links wrap to a second line under the wordmark.
+   No hamburger.
+   ============================================================ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--cream);
+  border-bottom: var(--hairline) solid var(--ink);
+}
+
+.header-bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--section-pad-x);
+}
+
+.wordmark {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  font-size: 0.95rem;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.main-nav a {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  padding: var(--space-1) 0;
+  position: relative;
+  transition: opacity var(--transition-fast);
+}
+
+.main-nav a:hover {
+  opacity: 0.65;
+}
+
+/* Brand Studio external link in the nav gets the teal accent so it's noticeably
+   the warmer invitation among the nav items. */
+.main-nav .nav-external {
+  color: var(--teal);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.main-nav .nav-external .external-icon {
+  font-size: 0.85em;
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+.main-nav .nav-external:hover .external-icon {
+  transform: translate(2px, -2px);
+}
+
+
+/* ============================================================
+   8. HERO
+
+   Two columns. Left: three-line headline (each line styled
+   differently), subhead, CTAs. Right: vertical portrait, full bleed.
+   ============================================================ */
+
+.hero {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  min-height: calc(100vh - 72px);
+  align-items: stretch;
+}
+
+.hero-text {
+  padding: var(--section-pad-y) var(--section-pad-x);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-5);
+}
+
+/* Three lines, each styled differently. Switzer Black ink / Switzer Black teal /
+   DM Serif Display Italic smaller. The variation IS the visual hierarchy. */
+.hero-headline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 22ch;
+}
+
+.hero-line {
+  display: block;
+}
+
+.hero-line-1 {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: var(--type-hero);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.hero-line-2 {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: var(--type-hero);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--teal);
+}
+
+.hero-line-3 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: calc(var(--type-hero) * 0.5);
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--ink);
+  opacity: 1;
+  margin-top: var(--space-2);
+}
+
+/* A hairline rule under the hero headline gives the design room to breathe
+   between the headline block and the subhead below. */
+.hero-divider {
+  width: clamp(3rem, 6vw, 5rem);
+  height: 2px;
+  background: var(--ink);
+  border: none;
+  margin: var(--space-3) 0 var(--space-2);
+  opacity: 0.65;
+}
+
+.hero-sub {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--type-lead);
+  line-height: 1.5;
+  max-width: 42ch;
+  opacity: 0.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  align-items: center;
+}
+
+.hero-portrait {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* ============================================================
+   9. PHILOSOPHY (dark)
+   The through-line, alone on a dark surface.
+   ============================================================ */
+
+.pull-quote {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--type-pull-quote);
+  line-height: 1.3;
+  max-width: 36ch;
+  letter-spacing: 0;
+}
+
+
+/* ============================================================
+   10. ABOUT (cream)
+
+   Two columns: text + credentials on the left, headshot on the right.
+   Mobile stacks (photo first).
+   ============================================================ */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* Credentials quick-read. Big bolded number/mark, small uppercase label.
+   Bordered top + bottom to feel like a scannable block. */
+.credentials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-top: var(--hairline) solid currentColor;
+  border-bottom: var(--hairline) solid currentColor;
+}
+
+.credentials li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.credentials-number {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  min-width: 3rem;
+  color: var(--teal);
+}
+
+.credentials-label {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.about-body p {
+  max-width: 38rem;
+}
+
+.about-text .pill-cta {
+  align-self: flex-start;
+}
+
+/* Softer footer link for the About section — no pill, just an inviting text link to the podcast */
+.about-text-link {
+  align-self: flex-start;
+  font-size: 0.95rem;
+}
+
+.about-portrait {
+  position: sticky;
+  top: var(--space-6);
+}
+
+.about-portrait img {
+  width: 100%;
+  height: auto;
+  border: var(--hairline) solid var(--ink);
+}
+
+
+/* ============================================================
+   11. SERVICES (sand)
+
+   Three cards. Equal weight. Each frames a SITUATION (When...) and
+   the approach. No audience labels. No track jargon.
+   ============================================================ */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: var(--hairline) solid currentColor;
+  border-radius: 2px;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  background: transparent;
+}
+
+.service-card:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.service-card h3 {
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: none;
+}
+
+.section-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+
+/* ============================================================
+   11b. METHODOLOGY (dark)
+
+   Named frameworks. Two-column grid on desktop, single on mobile.
+   Each entry: Switzer Black name + DM Serif italic tagline + short body.
+   ============================================================ */
+
+.frameworks-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-5) var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.framework-entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) 0;
+  border-top: var(--hairline) solid currentColor;
+}
+
+.framework-name {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.framework-tag {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.framework-tagline {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--yellow);
+  max-width: none;
+}
+
+.framework-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.85;
+  max-width: 38ch;
+}
+
+
+/* ============================================================
+   12. TESTIMONIALS (sand)
+   ============================================================ */
+
+.testimonials-headline {
+  margin-bottom: var(--space-6);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6) var(--space-5);
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.testimonial blockquote {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.testimonial figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-top: var(--space-2);
+  border-top: var(--hairline) solid currentColor;
+  max-width: fit-content;
+  margin-top: var(--space-2);
+}
+
+.testimonial-name {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.testimonial-role {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+
+/* ============================================================
+   12b. /work-with-me PAGE STYLES
+
+   Page-specific layout for the deeper Work With Me page. Reuses
+   most of the homepage system; adds entry-list styling for the
+   three deeper service descriptions and the dark credentials grid.
+   ============================================================ */
+
+/* Work hero — full-width text, no portrait. Single-column layout. */
+.work-hero {
+  padding: var(--section-pad-y) var(--section-pad-x);
+}
+
+.work-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 50rem;
+}
+
+/* The Work section — numbered service entries.
+   Each entry is a 2-column grid: big 01/02/03 number on the left,
+   service content on the right. The number makes the three offerings
+   visually unmistakable as you scan the page. */
+.work-entries {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.work-entry {
+  display: grid;
+  grid-template-columns: minmax(70px, 110px) 1fr;
+  gap: var(--space-4) var(--space-5);
+  padding-top: var(--space-6);
+  border-top: var(--hairline) solid currentColor;
+  align-items: start;
+}
+
+.work-entry:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.work-entry-number {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  display: block;
+}
+
+.work-entry-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.work-entry-name {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Mobile: collapse the number above the content */
+@media (max-width: 700px) {
+  .work-entry {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+
+.work-entry-intro {
+  font-size: var(--type-lead);
+  line-height: 1.55;
+  max-width: 50rem;
+}
+
+/* Action line under each service intro. Bordered top + slightly bolder text
+   + teal link color so the call to action visually breaks from the paragraph
+   above and reads as the next move, not a continuation. */
+.work-entry-action {
+  font-size: var(--type-lead);
+  font-weight: 500;
+  line-height: 1.5;
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: var(--hairline) solid currentColor;
+  max-width: none;
+}
+
+.work-entry-action a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  transition: opacity var(--transition-fast);
+}
+
+.work-entry-action a:hover {
+  opacity: 0.7;
+}
+
+/* Inline link inside body copy — underlined, weighted */
+.inline-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: opacity var(--transition-fast);
+}
+
+.inline-link:hover {
+  opacity: 0.7;
+}
+
+.inline-link-light {
+  color: var(--yellow);
+}
+
+/* Entry-points cards reuse .service-card but add a small tier label
+   and a final inline link instead of pill CTA */
+.entry-tier {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.entry-link {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: var(--space-3);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Credentials on /work-with-me — same component, dark theme variant, 2-col grid */
+.work-credentials .credentials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-3) var(--space-5);
+  padding: var(--space-5) 0;
+  margin-top: var(--space-3);
+}
+
+.work-credentials .credentials-number {
+  color: var(--yellow);
+  min-width: 4rem;
+}
+
+.work-credentials-note {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 50rem;
+  opacity: 0.85;
+  margin-top: var(--space-4);
+}
+
+
+/* ============================================================
+   12c. /contact PAGE STYLES
+
+   Clean editorial form. Underline-style inputs (no chunky boxes),
+   uppercase Switzer Medium labels, teal accent on focus, generous
+   vertical rhythm. Reuses .pill-cta-large for the submit button.
+   ============================================================ */
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 50rem;
+}
+
+.contact-intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 38rem;
+}
+
+.contact-headline {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.contact-sub {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--type-lead);
+  line-height: 1.55;
+  opacity: 0.85;
+  max-width: 42ch;
+}
+
+/* The form itself */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-top: var(--space-3);
+  max-width: 38rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.form-label {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+
+.form-label em {
+  color: var(--teal);
+  font-style: normal;
+  font-family: inherit;
+  margin-left: 0.15rem;
+}
+
+.form-hint {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  opacity: 0.65;
+  margin-top: calc(-1 * var(--space-1));
+  margin-bottom: var(--space-1);
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field textarea {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--ink);
+  border-radius: 0;
+  padding: var(--space-2) 0;
+  width: 100%;
+  resize: vertical;
+  transition: border-color var(--transition-fast);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-field textarea {
+  min-height: 4rem;
+  font-family: 'Switzer', system-ui, sans-serif;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  border-bottom-width: 2px;
+}
+
+/* Checkbox group — used for "What might I help with?" */
+.form-field-group {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-2);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--teal);
+  cursor: pointer;
+}
+
+/* Honeypot — visually hidden, accessible to screen readers but no real-user input */
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-submit {
+  align-self: flex-start;
+  margin-top: var(--space-3);
+}
+
+.form-submit[disabled] {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* Inline error shown if the AJAX submission to Formspree fails.
+   Hidden by default (via the [hidden] attribute); script.js toggles it. */
+.form-error {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  padding: var(--space-3);
+  border-left: 3px solid var(--teal);
+  background: rgba(83, 197, 179, 0.08);
+  margin-top: var(--space-3);
+}
+
+.form-note {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: var(--space-2);
+  max-width: none;
+}
+
+.contact-direct {
+  padding-top: var(--space-5);
+  border-top: var(--hairline) solid var(--ink);
+}
+
+.contact-direct p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+
+/* ============================================================
+   12e. /about PAGE STYLES
+
+   Story-led page: two-column hero (text + secondary portrait),
+   long-form narrative bio, six core values grid, where-I-am block,
+   personal final CTA.
+   ============================================================ */
+
+/* Hero: 2 columns on desktop, stacks on mobile. */
+.about-hero {
+  padding: var(--section-pad-y) var(--section-pad-x);
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.about-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 36rem;
+}
+
+.about-hero-portrait img {
+  width: 100%;
+  height: auto;
+  max-height: 70vh;
+  object-fit: cover;
+  border: var(--hairline) solid var(--ink);
+}
+
+/* The story — narrative bio. Wider text column than usual since the bio
+   benefits from a comfortable reading measure. */
+.story-section .story-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 50rem;
+  margin-top: var(--space-4);
+}
+
+.story-section .story-body p {
+  font-size: var(--type-lead);
+  line-height: 1.6;
+  max-width: 38rem;
+}
+
+/* Six core values — grid of name + definition entries on dark surface. */
+.values-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4) var(--space-6);
+  margin-top: var(--space-5);
+}
+
+.value-entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4) 0;
+  border-top: var(--hairline) solid currentColor;
+}
+
+.value-name {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.3rem, 1.9vw, 1.55rem);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--yellow);
+}
+
+.value-def {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  opacity: 0.9;
+  max-width: 36ch;
+}
+
+/* Where I am — small personal section, light surface, two paragraphs. */
+.where-section .where-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 50rem;
+  margin-top: var(--space-4);
+}
+
+.where-section .where-body p {
+  font-size: var(--type-lead);
+  line-height: 1.6;
+  max-width: 42rem;
+}
+
+/* Mobile: stack the hero columns, photo first. */
+@media (max-width: 900px) {
+  .about-hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .about-hero-portrait {
+    order: -1;
+    max-width: 320px;
+  }
+
+  .about-hero-text {
+    max-width: none;
+  }
+}
+
+
+/* ============================================================
+   12d. /thank-you PAGE STYLES
+
+   Branded thank-you page. Calm acknowledgment + two soft links
+   (Brand Studio and podcast) instead of Formspree's default page.
+   ============================================================ */
+
+.thank-you {
+  padding: var(--section-pad-y) var(--section-pad-x);
+}
+
+.thank-you-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 42rem;
+}
+
+.thank-you-headline {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.thank-you-sub {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--type-lead);
+  line-height: 1.55;
+  opacity: 0.85;
+  max-width: 42ch;
+}
+
+.thank-you-while {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-top: var(--space-2);
+}
+
+.thank-you-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: 0;
+  margin: 0;
+}
+
+.thank-you-options li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.thank-you-link {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--teal);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  align-self: flex-start;
+  transition: opacity var(--transition-fast);
+}
+
+.thank-you-link:hover {
+  opacity: 0.7;
+}
+
+.thank-you-link-note {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+.thank-you-return {
+  font-size: 0.95rem;
+  opacity: 0.75;
+  margin-top: var(--space-3);
+}
+
+
+/* ============================================================
+   13. FINAL CTA (dark)
+   ============================================================ */
+
+.final-cta {
+  text-align: left;
+}
+
+.cta-headline {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+  max-width: 14ch;
+}
+
+.cta-sub {
+  font-size: var(--type-lead);
+  margin-bottom: var(--space-5);
+  opacity: 0.85;
+  max-width: 50ch;
+}
+
+.cta-secondary {
+  margin-top: var(--space-5);
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+
+/* ============================================================
+   14. FOOTER
+   ============================================================ */
+
+.site-footer {
+  padding: var(--section-pad-y) var(--section-pad-x) var(--space-5);
+  border-top: var(--hairline) solid var(--cream);
+}
+
+.footer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-5);
+  padding-bottom: var(--space-5);
+  border-bottom: var(--hairline) solid currentColor;
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.footer-tagline {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  letter-spacing: -0.01em;
+  max-width: 32ch;
+  line-height: 1.3;
+}
+
+/* "Identity first." is an inline yellow accent.
+   The <br> in the markup forces "Build from the inside out." onto its own line. */
+
+.footer-meta {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.footer-col h5 {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: var(--space-3);
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.footer-col a {
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
+}
+
+.footer-col a:hover {
+  color: var(--yellow);
+}
+
+.footer-legal {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  padding-top: var(--space-5);
+  border-top: var(--hairline) solid currentColor;
+  flex-wrap: wrap;
+}
+
+.footer-legal a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-legal a:hover {
+  opacity: 1;
+}
+
+
+/* ============================================================
+   15. SCROLL REVEAL
+   ============================================================ */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.js .reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js .reveal-children > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.js .reveal-children.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js .reveal-children.revealed > *:nth-child(1) { transition-delay: 0ms; }
+.js .reveal-children.revealed > *:nth-child(2) { transition-delay: 80ms; }
+.js .reveal-children.revealed > *:nth-child(3) { transition-delay: 160ms; }
+.js .reveal-children.revealed > *:nth-child(4) { transition-delay: 240ms; }
+
+
+/* ============================================================
+   16. RESPONSIVE
+   Mobile-first overrides at <= 900px.
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  /* Header: stack wordmark + nav on one row, nav links wrap to second row */
+  .header-bar {
+    grid-template-columns: auto auto;
+    grid-template-areas:
+      "wordmark cta"
+      "nav nav";
+    row-gap: var(--space-3);
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
+  }
+
+  .wordmark {
+    grid-area: wordmark;
+  }
+
+  .header-bar .pill-cta {
+    grid-area: cta;
+    justify-self: end;
+  }
+
+  .main-nav {
+    grid-area: nav;
+    justify-content: flex-start;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .main-nav a {
+    font-size: 0.9rem;
+  }
+
+  /* Hero: stack text then photo */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-text {
+    padding: var(--space-6) var(--section-pad-x);
+    gap: var(--space-4);
+  }
+
+  .hero-headline {
+    max-width: none;
+    gap: var(--space-1);
+  }
+
+  .hero-line-1,
+  .hero-line-2 {
+    font-size: clamp(1.75rem, 8vw, 2.75rem);
+  }
+
+  .hero-line-3 {
+    font-size: clamp(1.1rem, 5vw, 1.65rem);
+  }
+
+  .hero-portrait {
+    height: 65vh;
+    max-height: 600px;
+  }
+
+  .hero-portrait img {
+    object-position: center 20%;
+  }
+
+  /* About: stack vertically, photo first */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .about-portrait {
+    max-width: 320px;
+    position: static;
+  }
+
+  /* Final CTA: tighten */
+  .cta-headline {
+    font-size: clamp(1.75rem, 8vw, 2.75rem);
+  }
+
+  /* Footer: stack legal */
+  .footer-legal {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}
+
+
+/* ============================================================
+   17. REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js .reveal,
+  .js .reveal-children > * {
+    opacity: 1;
+    transform: none;
+  }
+}

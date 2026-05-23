@@ -1,0 +1,16 @@
+# macOS junk
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
+
+# Local project planning docs (kept out of the public repo)
+CURRENT_SITE_AUDIT.md
+DESIGN.md
+HOMEPAGE_DRAFT.md
+PLAN.md
+PRODUCT.md
