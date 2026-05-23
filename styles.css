@@ -962,8 +962,14 @@ section {
   font-family: 'Switzer', system-ui, sans-serif;
   font-weight: 900;
   font-size: clamp(2rem, 5vw, 3.5rem);
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -0.02em;
+  background: var(--teal);
+  color: var(--ink);
+  padding: 0.1em 0.35em;
+  display: inline-block;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .contact-sub {
