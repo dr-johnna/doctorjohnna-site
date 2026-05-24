@@ -4,7 +4,6 @@
     { "source": "/programs", "destination": "/work-with-me", "permanent": true },
     { "source": "/blog/programs", "destination": "/work-with-me", "permanent": true },
     { "source": "/blog/about", "destination": "/about", "permanent": true },
-    { "source": "/assessment", "destination": "https://strengths.drjohnna.co", "permanent": true },
     { "source": "/strengths", "destination": "https://strengths.drjohnna.co", "permanent": true },
     { "source": "/energyaudit", "destination": "https://energyaudit.drjohnna.co", "permanent": true },
     { "source": "/newsletter", "destination": "/contact", "permanent": true },

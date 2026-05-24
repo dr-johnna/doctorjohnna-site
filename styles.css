@@ -957,7 +957,19 @@ section {
   gap: var(--space-3);
   max-width: 38rem;
   padding-bottom: var(--space-5);
-  border-bottom: 2px solid var(--teal);
+  position: relative;
+}
+
+/* Short teal line under the intro, anchored left — matches the
+   hero-divider treatment elsewhere on the site (just in teal). */
+.contact-intro::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: clamp(4rem, 8vw, 6rem);
+  height: 2px;
+  background: var(--teal);
 }
 
 .contact-headline {
@@ -1116,9 +1128,9 @@ section {
 }
 
 .form-note {
-  font-size: 0.85rem;
-  opacity: 0.7;
-  margin-top: var(--space-2);
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-top: var(--space-3);
   max-width: none;
 }
 
