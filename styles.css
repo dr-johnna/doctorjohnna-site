@@ -964,14 +964,8 @@ section {
   font-family: 'Switzer', system-ui, sans-serif;
   font-weight: 900;
   font-size: clamp(2rem, 5vw, 3.5rem);
-  line-height: 1.1;
+  line-height: 1;
   letter-spacing: -0.02em;
-  background: var(--teal);
-  color: var(--ink);
-  padding: 0.1em 0.35em;
-  display: inline-block;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
 }
 
 .contact-sub {
@@ -983,13 +977,17 @@ section {
   max-width: 42ch;
 }
 
-/* The form itself */
+/* The form itself — encased in a thin ink-outlined box so the questions
+   read as a single form container, not floating fields. */
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
-  margin-top: var(--space-3);
+  margin-top: var(--space-5);
   max-width: 38rem;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: var(--space-5);
 }
 
 .form-field {
@@ -1184,6 +1182,21 @@ section {
   font-size: var(--type-lead);
   line-height: 1.6;
   max-width: 38rem;
+}
+
+/* Bolded + slightly enlarged lead phrases inside the long story paragraphs.
+   Breaks up the wall of text so the reader can scan the arc. */
+.story-emphasis {
+  font-weight: 900;
+  font-size: 1.1em;
+  letter-spacing: -0.01em;
+}
+
+/* Teal variant of the DM Serif italic hero line — used on /about for
+   the "For Purpose and Peace." second line below the main tagline. */
+.hero-line-3.hero-line-3-teal,
+.hero-line-3-teal.hero-line-3 {
+  color: var(--teal);
 }
 
 /* Six core values — grid of name + definition entries on dark surface. */
