@@ -1204,6 +1204,26 @@ section {
   letter-spacing: -0.01em;
 }
 
+/* Story callout — sets the "third business" paragraph apart as the throughline
+   of the narrative. Teal accent bar + indent lifts it from the surrounding text. */
+.story-section .story-body p.story-callout {
+  padding: var(--space-2) 0 var(--space-2) var(--space-4);
+  border-left: 3px solid var(--teal);
+}
+
+/* Editorial pull-quote sentence inside the story callout. DM Serif italic in teal
+   matches the hero italic line treatment used elsewhere on /about. */
+.story-pullquote {
+  display: block;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-style: italic;
+  font-size: var(--type-pull-quote);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--teal);
+  margin: var(--space-3) 0;
+}
+
 /* Teal variant of the DM Serif italic hero line — used on /about for
    the "For Purpose and Peace." second line below the main tagline. */
 .hero-line-3.hero-line-3-teal,
