@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trainings · Dr. Johnna</title>
+  <meta name="description" content="Corporate and organizational trainings on AI adoption, motivation, and sustainable performance. Psychology-backed and built around the people in the room. Briefings, workshops, multi-week series, and full strategy intensives.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Trainings · Dr. Johnna">
+  <meta property="og:description" content="Corporate and organizational trainings on AI adoption, motivation, and sustainable performance. Built around the people in the room.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://doctorjohnna.com/trainings">
+
+  <!-- Same fonts as the rest of the site. Switzer (Fontshare) + DM Serif Display (Google). -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Page-specific styles only.
+       Mirrors automations.html so the two pages read as siblings.
+       Anything reusable across the site lives in styles.css. -->
+  <style>
+    /* ---------- PAGE HERO (interior, no portrait) ----------
+       Uses the site's base section padding-x for left alignment.
+       Editorial DM Serif headline with a teal italic emphasis,
+       Switzer body lede. */
+    .page-hero {
+      background: var(--cream);
+      color: var(--ink);
+      padding-top: clamp(80px, 12vw, 140px);
+      padding-bottom: clamp(48px, 8vw, 80px);
+    }
+
+    .page-hero .eyebrow {
+      font-family: 'Switzer', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 28px;
+    }
+
+    .page-hero h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(44px, 7vw, 88px);
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      max-width: 18ch;
+      margin-bottom: 32px;
+    }
+
+    .page-hero h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .page-hero .lede {
+      font-size: clamp(18px, 2.2vw, 22px);
+      max-width: 60ch;
+      color: oklch(from var(--ink) l c h / 0.68);
+      line-height: 1.55;
+    }
+
+    .page-hero .lede strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* Spacing for the in-hero "See the trainings" pill button. */
+    .page-hero .hero-cta {
+      margin-top: clamp(28px, 4vw, 40px);
+    }
+
+    /* ---------- INTRO STRIP (sand, single credibility paragraph) ----------
+       A short positioning beat between the hero and the pull-quote.
+       Slightly emphasized body text so it carries weight without
+       needing a headline. */
+    .intro-strip {
+      background: var(--sand);
+      color: var(--ink);
+    }
+
+    .intro-strip-body {
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.55;
+      max-width: 62ch;
+      font-weight: 500;
+    }
+
+    /* ---------- CREDIBILITY (sand, headline + two short paragraphs) ----------
+       Sits between the trainings menu and the final CTA. Reuses
+       .section-headline from styles.css. */
+    .credibility {
+      background: var(--sand);
+      color: var(--ink);
+    }
+
+    .credibility-body {
+      max-width: 64ch;
+      margin-top: clamp(24px, 4vw, 32px);
+    }
+
+    .credibility-body p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 1.25em;
+    }
+
+    .credibility-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ---------- TRAININGS MENU (collapsible numbered sections) ----------
+       Each training is a <details> element. The <summary> shows the
+       number, title, intro, and a + toggle that rotates to × on open. */
+    .trainings {
+      background: var(--cream);
+      color: var(--ink);
+      padding-bottom: clamp(48px, 8vw, 80px);
+    }
+
+    .trainings-intro {
+      padding-top: 0;
+      padding-bottom: clamp(24px, 4vw, 40px);
+    }
+
+    .trainings-intro .section-lead {
+      margin-top: 16px;
+      max-width: 50ch;
+    }
+
+    .training {
+      border-bottom: 1px solid oklch(from var(--ink) l c h / 0.12);
+    }
+
+    .training-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: clamp(28px, 4vw, 40px) 0;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    /* Hide the default disclosure marker on all browsers. */
+    .training-head::-webkit-details-marker { display: none; }
+    .training-head::marker { content: ''; }
+
+    .training-num {
+      font-family: 'Switzer', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      padding-top: 12px;
+      flex-shrink: 0;
+    }
+
+    .training-head-body { flex: 1; }
+
+    .training-head h2 {
+      font-size: clamp(28px, 3.6vw, 40px);
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .training-intro {
+      font-size: 17px;
+      color: oklch(from var(--ink) l c h / 0.62);
+      max-width: 60ch;
+      margin: 0;
+    }
+
+    .training-toggle {
+      font-family: 'Switzer', sans-serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--teal);
+      line-height: 1;
+      padding-top: 6px;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+
+    .training[open] .training-toggle { transform: rotate(45deg); }
+
+    /* Expanded content inside each training. Three blocks:
+       For / Formats / Walk-away. */
+    .training-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 48px;
+      padding: 8px 0 clamp(36px, 5vw, 48px);
+    }
+
+    .detail-block .detail-tag {
+      display: block;
+      font-family: 'Switzer', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 10px;
+    }
+
+    .detail-block p,
+    .detail-block ul {
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+
+    .detail-block ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .detail-block li {
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .detail-block li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--teal);
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 9px;
+    }
+
+    .detail-block.detail-walkaway {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 720px) {
+      .training-detail { grid-template-columns: 1fr; gap: 24px; }
+      .detail-block.detail-walkaway { grid-column: auto; }
+    }
+
+    /* ---------- A.I.M. FRAMEWORK (dark, three stages) ----------
+       Explains what A.I.M. stands for. Sits between the trainings
+       menu and the credibility section. Same component as /automations. */
+    .aim {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .aim h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.05;
+      max-width: 22ch;
+      margin-bottom: 24px;
+    }
+
+    .aim .aim-lede {
+      font-size: 19px;
+      max-width: 56ch;
+      color: oklch(from var(--cream) l c h / 0.72);
+      margin-bottom: clamp(40px, 6vw, 64px);
+      line-height: 1.55;
+    }
+
+    .aim-stages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid oklch(from var(--cream) l c h / 0.16);
+    }
+
+    .stage {
+      padding: 40px 32px 0 0;
+      border-right: 1px solid oklch(from var(--cream) l c h / 0.16);
+    }
+
+    .stage:nth-child(2) { padding-left: 32px; }
+    .stage:last-child {
+      border-right: none;
+      padding-left: 32px;
+      padding-right: 0;
+    }
+
+    .stage h3 {
+      font-size: 26px;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .stage p {
+      font-size: 15px;
+      color: oklch(from var(--cream) l c h / 0.66);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 720px) {
+      .aim-stages { grid-template-columns: 1fr; }
+      .stage,
+      .stage:nth-child(2),
+      .stage:last-child {
+        padding: 32px 0;
+        border-right: none;
+        border-bottom: 1px solid oklch(from var(--cream) l c h / 0.16);
+      }
+      .stage:last-child { border-bottom: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+       HEADER (same as the rest of the site)
+       ============================================================ -->
+  <header class="site-header" data-theme="light">
+    <div class="header-bar">
+      <a href="/" class="wordmark" aria-label="Dr. Johnna, home">DR. JOHNNA</a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/about.html">About</a>
+        <a href="/work-with-me.html">Work With Me</a>
+        <a href="https://brandstudio.drjohnna.co" class="nav-external" target="_blank" rel="noopener">
+          Brand Studio <span class="external-icon" aria-hidden="true">↗</span>
+        </a>
+        <a href="https://drjohnna.riverside.com/" target="_blank" rel="noopener">Podcast</a>
+      </nav>
+
+      <a href="/contact.html" class="pill-cta">
+        Reach out <span class="plus-icon" aria-hidden="true">+</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================================
+         HERO
+         Psychology + identity frame. The work isn't transferring
+         skills, it's shifting what people let themselves do.
+         ============================================================ -->
+    <section class="page-hero" data-theme="light">
+      <p class="eyebrow reveal">Corporate &amp; Organizational Trainings</p>
+      <h1 class="reveal">Training that changes who they <em>become</em>, not just what they know.</h1>
+      <p class="lede reveal">Learning the skill is the easy part. Seeing themselves using it is the work. Below: the trainings, grounded in psychology.</p>
+
+      <p class="hero-cta reveal">
+        <a href="#trainings" class="pill-cta">
+          See the trainings <span class="plus-icon" aria-hidden="true">+</span>
+        </a>
+      </p>
+    </section>
+
+    <!-- ============================================================
+         INTRO STRIP
+         A short credibility/positioning line between hero and the
+         pull-quote, so corporate readers see the practice (psychology
+         + AI, founders to Fortune 500s) before scrolling further.
+         ============================================================ -->
+    <section class="intro-strip" data-theme="sand">
+      <p class="intro-strip-body reveal">
+        Dr. Johnna Richardson, PhD brings psychology-backed, AI-powered training to organizations, leadership teams, and small businesses. Real tools. Real behavior change. Real results.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         PRINCIPLE PULL-QUOTE
+         Editorial moment. Ties the intro strip above to the menu
+         of trainings below.
+         ============================================================ -->
+    <section class="philosophy" data-theme="dark">
+      <blockquote class="pull-quote reveal">
+        A good training doesn't only transfer skills - it <span class="accent-yellow">shifts identity.</span>
+      </blockquote>
+    </section>
+
+    <!-- ============================================================
+         THE TRAININGS
+         Six collapsible offerings. Each shows who it's for, formats
+         available, and what the room walks away with. No pricing
+         on the public page — custom proposals via /contact.
+         ============================================================ -->
+    <section class="trainings" data-theme="light" id="trainings">
+
+        <header class="trainings-intro">
+          <h2 class="section-headline reveal">The trainings.</h2>
+          <p class="section-lead reveal">Open any to see who it's for, the formats available, and what the room walks away with.</p>
+        </header>
+
+        <!-- 01 AI ESSENTIALS -->
+        <details class="training">
+          <summary class="training-head reveal">
+            <span class="training-num">01</span>
+            <div class="training-head-body">
+              <h2>AI Essentials</h2>
+              <p class="training-intro">AI at work, without the overwhelm. For teams just starting, and experienced users keeping pace as the tools change.</p>
+            </div>
+            <span class="training-toggle" aria-hidden="true">+</span>
+          </summary>
+
+          <div class="training-detail">
+            <div class="detail-block">
+              <span class="detail-tag">For</span>
+              <p>Teams new to AI alongside experienced users staying current as the tools evolve. Workforce development cohorts, leadership teams, and full staff groups.</p>
+            </div>
+            <div class="detail-block">
+              <span class="detail-tag">Formats</span>
+              <p>1&ndash;2 hour intro session, virtual or onsite. Expanded half-day workshops available on request.</p>
+            </div>
+            <div class="detail-block detail-walkaway">
+              <span class="detail-tag">Outcomes</span>
+              <ul>
+                <li>Why AI resistance is a normal, healthy psychological response</li>
+                <li>A realistic picture of what AI can and cannot do in your environment</li>
+                <li>One successful hands-on AI experience before leaving the room</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <!-- 02 AI STRATEGY INTENSIVE -->
+        <details class="training">
+          <summary class="training-head reveal">
+            <span class="training-num">02</span>
+            <div class="training-head-body">
+              <h2>AI Strategy Intensive</h2>
+              <p class="training-intro">A full AI adoption roadmap, designed end-to-end with the people who'll use it.</p>
+            </div>
+            <span class="training-toggle" aria-hidden="true">+</span>
+          </summary>
+
+          <div class="training-detail">
+            <div class="detail-block">
+              <span class="detail-tag">For</span>
+              <p>Organizations ready to commit to AI integration as a strategic priority, not a one-off training. Best for leadership teams making multi-year decisions.</p>
+            </div>
+            <div class="detail-block">
+              <span class="detail-tag">Formats</span>
+              <p>Multi-week engagement, hybrid delivery. Customized to your organization's structure and goals.</p>
+            </div>
+            <div class="detail-block detail-walkaway">
+              <span class="detail-tag">Outcomes</span>
+              <ul>
+                <li>Stakeholder discovery and readiness assessment across roles</li>
+                <li>Role-specific AI integration plans (clinical, admin, leadership, or your own teams)</li>
+                <li>A change management plan with checkpoints for adoption and resistance</li>
+                <li>A complete A.I.M. roadmap from current state to sustainable practice</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <!-- 03 ENERGY MANAGEMENT -->
+        <details class="training">
+          <summary class="training-head reveal">
+            <span class="training-num">03</span>
+            <div class="training-head-body">
+              <h2>Energy Management</h2>
+              <p class="training-intro">Sustainable performance. Burnout prevention as a team operating system.</p>
+            </div>
+            <span class="training-toggle" aria-hidden="true">+</span>
+          </summary>
+
+          <div class="training-detail">
+            <div class="detail-block">
+              <span class="detail-tag">For</span>
+              <p>Leaders, managers, and teams at risk of burning out the people who hold the work. Helping professions, high-load operators, and anyone navigating sustained change.</p>
+            </div>
+            <div class="detail-block">
+              <span class="detail-tag">Formats</span>
+              <p>1-hour briefing. 4-week series (4&ndash;8 hours total). Half-day workshop or full-day intensive.</p>
+            </div>
+            <div class="detail-block detail-walkaway">
+              <span class="detail-tag">Outcomes</span>
+              <ul>
+                <li>The 4 Domains of Energy: physical, emotional, mental, purpose</li>
+                <li>A personal or team energy audit</li>
+                <li>Early signs of burnout and cognitive overload</li>
+                <li>One operational system redesigned to reduce cognitive load</li>
+                <li>Sustainable boundaries and a 30-day energy plan</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <!-- 04 PSYCHOLOGY OF MOTIVATION
+             NEW. Draft below is starter language for Dr. Johnna's
+             review since she's the SME on motivation science. -->
+        <details class="training">
+          <summary class="training-head reveal">
+            <span class="training-num">04</span>
+            <div class="training-head-body">
+              <h2>Psychology of Motivation</h2>
+              <p class="training-intro">Understand intrinsic and extrinsic motivation, and build the environments where people want to perform.</p>
+            </div>
+            <span class="training-toggle" aria-hidden="true">+</span>
+          </summary>
+
+          <div class="training-detail">
+            <div class="detail-block">
+              <span class="detail-tag">For</span>
+              <p>Leadership teams, managers, and culture-builders responsible for engagement, retention, and performance. Strong fit during change, hybrid transitions, or post-merger culture work.</p>
+            </div>
+            <div class="detail-block">
+              <span class="detail-tag">Formats</span>
+              <p>1-hour briefing. Half-day workshop. 4-week series for leadership cohorts. Custom team workshop.</p>
+            </div>
+            <div class="detail-block detail-walkaway">
+              <span class="detail-tag">Outcomes</span>
+              <ul>
+                <li>The difference between motivation and compliance, and why incentives often produce the wrong one</li>
+                <li>The four conditions for real engagement: autonomy, mastery, purpose, and identity fit</li>
+                <li>A diagnostic for whether your team is motivated by fear, recognition, or alignment</li>
+                <li>Practical levers leaders can pull to build motivating environments</li>
+                <li>(Multi-week only) A team motivation audit and a 30-day environment redesign plan</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <!-- 05 CUSTOM-DESIGNED TRAINING -->
+        <details class="training">
+          <summary class="training-head reveal">
+            <span class="training-num">05</span>
+            <div class="training-head-body">
+              <h2>Custom-Designed Training</h2>
+              <p class="training-intro">Psychology-powered training built around your team, your work, and the moment you're in.</p>
+            </div>
+            <span class="training-toggle" aria-hidden="true">+</span>
+          </summary>
+
+          <div class="training-detail">
+            <div class="detail-block">
+              <span class="detail-tag">For</span>
+              <p>Teams with a specific challenge no off-the-shelf training will address. Industry-specific contexts, sensitive change moments, or trainings shaped around your tools, your workflows, or your sector.</p>
+            </div>
+            <div class="detail-block">
+              <span class="detail-tag">Formats</span>
+              <p>Discovery first, then a custom proposal. Any duration. Virtual, onsite, or hybrid.</p>
+            </div>
+            <div class="detail-block detail-walkaway">
+              <span class="detail-tag">Outcomes</span>
+              <ul>
+                <li>A training shaped around the people, the work, and the moment they're in</li>
+                <li>Materials and content built specifically for your team</li>
+                <li>Psychology-grounded delivery that fits the room</li>
+                <li>A follow-up adoption plan so the change holds after the workshop ends</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <!-- 06 THE A.I.M. FRAMEWORK EXPERIENCE
+             Sits last so the reader meets A.I.M. here and then the
+             framework gets fully explained in the next section. -->
+        <details class="training">
+          <summary class="training-head reveal">
+            <span class="training-num">06</span>
+            <div class="training-head-body">
+              <h2>The A.I.M. Framework Experience</h2>
+              <p class="training-intro">Psychology-powered AI adoption for teams. The full framework, applied to your organization.</p>
+            </div>
+            <span class="training-toggle" aria-hidden="true">+</span>
+          </summary>
+
+          <div class="training-detail">
+            <div class="detail-block">
+              <span class="detail-tag">For</span>
+              <p>Leadership teams, departments, and full staff groups up to 25. Custom proposals for larger groups. Strong fit for behavioral health, healthcare, and mission-driven organizations.</p>
+            </div>
+            <div class="detail-block">
+              <span class="detail-tag">Formats</span>
+              <p>Half-day workshop, virtual or onsite. Multi-department packages available.</p>
+            </div>
+            <div class="detail-block detail-walkaway">
+              <span class="detail-tag">Outcomes</span>
+              <ul>
+                <li>A shared language and psychological safety around AI across the team</li>
+                <li>Role-specific integration priorities for clinical, admin, and leadership (or your own role mix)</li>
+                <li>A department-level AI adoption roadmap to guide next steps</li>
+                <li>The first wave of automations the team is ready to run</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+    </section>
+
+    <!-- ============================================================
+         THE A.I.M. FRAMEWORK
+         Explains what A.I.M. stands for. Sits right after the menu
+         since the previous training ("The A.I.M. Framework Experience")
+         references the framework by name.
+         Same component used on /automations, copy adapted for training.
+         ============================================================ -->
+    <section class="aim" data-theme="dark">
+      <h2 class="reveal">The A.I.M. Framework.</h2>
+      <p class="aim-lede reveal">Strategy, design, delivery, and the change management that turns training into behavior. We start with who you are. Then we build. The training is in service of the work, never the other way around.</p>
+
+      <div class="aim-stages">
+        <div class="stage reveal">
+          <h3>Align</h3>
+          <p>We start with the people, the values, and the real friction. No training gets designed until we know what it's serving.</p>
+        </div>
+        <div class="stage reveal">
+          <h3>Integrate</h3>
+          <p>Change management first. The training fits how your team already works, alongside the people who'll go through it. Behavior change built in, not bolted on.</p>
+        </div>
+        <div class="stage reveal">
+          <h3>Multiply</h3>
+          <p>Once the training has landed and the team is using what they learned, we expand. Time and energy go back to the work only people can do.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CREDIBILITY
+         Dr. Johnna's background and reach. Sand theme keeps tonal
+         variation between the white trainings menu and the dark CTA.
+         ============================================================ -->
+    <section class="credibility" data-theme="sand">
+      <h2 class="section-headline reveal">Psychology meets the real world of work.</h2>
+      <div class="credibility-body">
+        <p class="reveal">Dr. Johnna Richardson holds a PhD in Psychology and brings 20+ years of clinical, academic, and entrepreneurial experience. She translates complex behavioral science into simple tools your team will use, not just hear about.</p>
+        <p class="reveal">Her human-centered, trauma-informed approach focuses on sustainable performance. From Fortune 500s to nonprofits, law firms to healthcare organizations, her trainings meet every industry where they are.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL CTA
+         Single conversion path. No pricing on the public page,
+         all custom proposals via /contact.
+         ============================================================ -->
+    <section class="final-cta" data-theme="dark" id="contact">
+      <h2 class="cta-headline">
+        Let's design the training<br>
+        <span class="accent-yellow">your team needs.</span>
+      </h2>
+
+      <p class="cta-sub">
+        Every training gets shaped around the people in the room. Tell me about the team, the work, and the moment they're in. The proposal comes back built for that.
+      </p>
+
+      <a href="/contact.html" class="pill-cta pill-cta-large">
+        Reach out <span class="plus-icon" aria-hidden="true">+</span>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER (identical to the rest of the site)
+       ============================================================ -->
+  <footer class="site-footer" data-theme="dark">
+
+    <div class="footer-bar">
+      <span class="footer-tagline">
+        <span class="accent-yellow">Identity first.</span> Strategy follows.<br>
+        Build from the inside out.
+      </span>
+      <span class="footer-meta">Dr. Johnna Consulting</span>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/work-with-me.html">Work With Me</a></li>
+          <li><a href="/trainings.html">Trainings</a></li>
+          <li><a href="https://drjohnna.riverside.com/" target="_blank" rel="noopener">Podcast</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Free</h5>
+        <ul>
+          <li><a href="https://energyaudit.drjohnna.co">Energy Audit</a></li>
+          <li><a href="https://capacity.drjohnna.co">Hidden Capacity Diagnostic</a></li>
+          <li><a href="https://brandstudio.drjohnna.co">Identity Brand Studio</a></li>
+          <li><a href="https://airesources.drjohnna.co/" target="_blank" rel="noopener">AI Resource Vault</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:j@doctorjohnna.com">Email</a></li>
+          <li><a href="https://instagram.com/dr.johnna">Instagram</a></li>
+          <li><a href="https://linkedin.com/in/drjohnna">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/drjohnnabrynn">Facebook</a></li>
+          <li><a href="https://youtube.com/@drjohnna">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; 2026 Dr. Johnna Consulting LLC</span>
+      <span>
+        <a href="/privacy">Privacy</a>
+        ·
+        <a href="/terms">Terms</a>
+        ·
+        <a href="/disclaimer">Disclaimer</a>
+      </span>
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
