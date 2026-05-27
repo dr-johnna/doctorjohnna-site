@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI & Automation Menu · Dr. Johnna</title>
+  <meta name="description" content="What's actually possible when AI does real work inside a business. A menu of automations organized by function, paired with the A.I.M. Framework that makes them fit.">
+
+  <!-- Link-only page. Intentionally noindex so it stays a private resource
+       Dr. Johnna shares directly with corporate prospects. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI & Automation Menu · Dr. Johnna">
+  <meta property="og:description" content="What's actually possible when AI does real work inside a business.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://doctorjohnna.com/automations">
+
+  <!-- Same fonts as the rest of the site. Switzer (Fontshare) + DM Serif Display (Google). -->
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Page-specific styles only.
+       Anything reusable across the site lives in styles.css.
+       These rules cover the numbered function sections and the
+       problem/solution two-column item pattern unique to this page. -->
+  <style>
+    /* ---------- PAGE HERO (interior, no portrait) ----------
+       No internal wrap. The base `section` rule in styles.css already
+       supplies var(--section-pad-x) horizontally, which is the same
+       left edge every other section on the page uses. */
+    .page-hero {
+      background: var(--cream);
+      color: var(--ink);
+      padding-top: clamp(80px, 12vw, 140px);
+      padding-bottom: clamp(48px, 8vw, 80px);
+    }
+
+    .page-hero .eyebrow {
+      font-family: 'Switzer', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 28px;
+    }
+
+    /* Hero headline keeps the DM Serif Display editorial treatment from
+       the original starter, on purpose. All other H2/H3s inherit
+       Switzer 900 from styles.css so they match the rest of the site. */
+    .page-hero h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(44px, 7vw, 88px);
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      max-width: 18ch;
+      margin-bottom: 32px;
+    }
+
+    .page-hero h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .page-hero .lede {
+      font-size: clamp(18px, 2.2vw, 22px);
+      max-width: 60ch;
+      color: oklch(from var(--ink) l c h / 0.68);
+      line-height: 1.55;
+    }
+
+    .page-hero .lede strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ---------- FUNCTIONS (numbered sections with problem/solution items) ----------
+       Uses the site's default section padding (no internal max-width wrap),
+       so "Lead Generation" lines up with the pull-quote above and the
+       final CTA below. */
+    .functions {
+      background: var(--cream);
+      color: var(--ink);
+      padding-top: 0;
+      padding-bottom: clamp(48px, 8vw, 80px);
+    }
+
+    .func {
+      padding: clamp(48px, 7vw, 80px) 0;
+      border-bottom: 1px solid oklch(from var(--ink) l c h / 0.12);
+    }
+
+    .func-head {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 14px;
+    }
+
+    .func-num {
+      font-family: 'Switzer', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+    }
+
+    .func-head h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.05;
+    }
+
+    .func-intro {
+      font-size: 17px;
+      color: oklch(from var(--ink) l c h / 0.62);
+      max-width: 56ch;
+      margin-bottom: clamp(28px, 4vw, 44px);
+    }
+
+    .items { display: grid; gap: 0; }
+
+    .item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 28px 0;
+      border-top: 1px solid oklch(from var(--ink) l c h / 0.12);
+    }
+
+    .item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .item-problem,
+    .item-solution {
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .item-problem {
+      color: oklch(from var(--ink) l c h / 0.62);
+    }
+
+    .item-tag {
+      display: block;
+      font-family: 'Switzer', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .item-problem .item-tag {
+      color: var(--ink);
+      opacity: 0.45;
+    }
+
+    .item-solution .item-tag {
+      color: var(--teal);
+    }
+
+    .item-solution strong { font-weight: 600; }
+
+    /* ---------- A.I.M. CLOSE (dark, three stages) ----------
+       Same alignment pattern: no internal wrap, left edge matches
+       everything else via the base section padding. */
+    .aim-close {
+      background: var(--ink);
+      color: var(--cream);
+    }
+
+    .aim-close .eyebrow {
+      font-family: 'Switzer', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 28px;
+    }
+
+    .aim-close h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.05;
+      max-width: 22ch;
+      margin-bottom: 24px;
+    }
+
+    .aim-close .aim-lede {
+      font-size: 19px;
+      max-width: 56ch;
+      color: oklch(from var(--cream) l c h / 0.72);
+      margin-bottom: clamp(40px, 6vw, 64px);
+      line-height: 1.55;
+    }
+
+    .aim-stages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid oklch(from var(--cream) l c h / 0.16);
+    }
+
+    .stage {
+      padding: 40px 32px 0 0;
+      border-right: 1px solid oklch(from var(--cream) l c h / 0.16);
+    }
+
+    .stage:nth-child(2) { padding-left: 32px; }
+    .stage:last-child {
+      border-right: none;
+      padding-left: 32px;
+      padding-right: 0;
+    }
+
+    .stage h3 {
+      font-size: 26px;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .stage p {
+      font-size: 15px;
+      color: oklch(from var(--cream) l c h / 0.66);
+      line-height: 1.55;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 720px) {
+      .item {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .aim-stages { grid-template-columns: 1fr; }
+      .stage,
+      .stage:nth-child(2),
+      .stage:last-child {
+        padding: 32px 0;
+        border-right: none;
+        border-bottom: 1px solid oklch(from var(--cream) l c h / 0.16);
+      }
+      .stage:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+       HEADER (same as the rest of the site, no Automations link in nav
+       since this page is link-only)
+       ============================================================ -->
+  <header class="site-header" data-theme="light">
+    <div class="header-bar">
+      <a href="/" class="wordmark" aria-label="Dr. Johnna, home">DR. JOHNNA</a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/about.html">About</a>
+        <a href="/work-with-me.html">Work With Me</a>
+        <a href="https://brandstudio.drjohnna.co" class="nav-external" target="_blank" rel="noopener">
+          Brand Studio <span class="external-icon" aria-hidden="true">↗</span>
+        </a>
+        <a href="https://drjohnna.riverside.com/" target="_blank" rel="noopener">Podcast</a>
+      </nav>
+
+      <a href="/contact.html" class="pill-cta">
+        Reach out <span class="plus-icon" aria-hidden="true">+</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================================================
+         HERO
+         Interior page hero. Eyebrow + headline + lede, no portrait.
+         ============================================================ -->
+    <section class="page-hero" data-theme="light">
+      <p class="eyebrow reveal">AI &amp; Automation Menu</p>
+      <h1 class="reveal">What's actually <em>possible</em> when you put AI to work in your business.</h1>
+      <p class="lede reveal">Most automation conversations start with the tool. This one starts with the problem. Below are the places where AI does real work inside a business, organized by the function it serves. <strong>The fundamentals don't change.</strong> Lead generation, marketing, sales, delivery, support. AI makes them stronger. It does not replace them.</p>
+    </section>
+
+    <!-- ============================================================
+         PRINCIPLE PULL-QUOTE (dark, matches the site's philosophy section)
+         ============================================================ -->
+    <section class="philosophy" data-theme="dark">
+      <blockquote class="pull-quote reveal">
+        A business doesn't need more tools. It needs the right work done <span class="accent-yellow">without your hands on every part of it.</span>
+      </blockquote>
+    </section>
+
+    <!-- ============================================================
+         FIVE FUNCTIONS
+         Lead Gen, Marketing, Sales, Delivery, Support.
+         Each function: numbered head, intro line, and a stack of
+         problem/solution items.
+         ============================================================ -->
+    <section class="functions" data-theme="light">
+
+        <!-- 01 LEAD GENERATION -->
+        <article class="func">
+          <header class="func-head reveal">
+            <span class="func-num">01</span>
+            <h2>Lead Generation</h2>
+          </header>
+          <p class="func-intro reveal">The work of finding the right people, before they ever raise their hand.</p>
+
+          <div class="items">
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                You know who your ideal client is, but building a list of them by hand eats hours you don't have.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Automated lead research and enrichment.</strong> AI builds and verifies targeted prospect lists, pulls company and contact detail, and hands you a clean list ready for outreach. No guessing at email formats.
+              </div>
+            </div>
+
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                New inquiries come in through forms, DMs, and email, and some slip through before anyone follows up.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Lead capture and routing.</strong> Every inquiry is logged in one place, tagged, and routed to the right person or sequence the moment it arrives.
+              </div>
+            </div>
+
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                Your website gets visitors who leave without a way to stay in touch.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Intelligent lead magnets and quizzes.</strong> Interactive assessments that give the visitor something useful, qualify them as they go, and grow your list with people who actually fit.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 MARKETING & CONTENT -->
+        <article class="func">
+          <header class="func-head reveal">
+            <span class="func-num">02</span>
+            <h2>Marketing &amp; Content</h2>
+          </header>
+          <p class="func-intro reveal">The work of staying visible and consistent without it consuming your whole week.</p>
+
+          <div class="items">
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                One piece of content (a podcast, a talk, a long post) could become a dozen, but repurposing it by hand never happens.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Content repurposing engine.</strong> One source becomes platform-ready posts, clips, captions, and email copy, all in your voice, drafted in minutes instead of days.
+              </div>
+            </div>
+
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                Posting consistently means logging into five platforms and remembering to do it.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Scheduling and distribution.</strong> Content is queued, formatted per platform, and published on a cadence you set once. The calendar runs itself.
+              </div>
+            </div>
+
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                Your email list goes quiet because writing to it feels like one more thing.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Drafted nurture sequences.</strong> Welcome flows, re-engagement, and regular newsletters drafted in your tone, ready for your review and a single approval.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 SALES & OUTREACH -->
+        <article class="func">
+          <header class="func-head reveal">
+            <span class="func-num">03</span>
+            <h2>Sales &amp; Outreach</h2>
+          </header>
+          <p class="func-intro reveal">The work of moving the right people toward a yes, without losing the human part.</p>
+
+          <div class="items">
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                Personalized outreach takes so long that you either send something generic or send nothing.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Personalized outreach at scale.</strong> AI drafts genuinely tailored messages using real research on each prospect, so every note reads like you wrote it. The thinking is yours.
+              </div>
+            </div>
+
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                Follow-up is where deals are won, and it's the first thing that falls off when you get busy.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Follow-up sequencing.</strong> Timed, context-aware follow-ups that keep conversations alive and pause the moment a prospect replies.
+              </div>
+            </div>
+
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                A real conversation ends and the proposal sits unwritten for a week.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Call notes to proposal.</strong> Meeting notes become a branded, ready-to-send proposal the same day, while the conversation is still warm.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04 DELIVERY & OPERATIONS -->
+        <article class="func">
+          <header class="func-head reveal">
+            <span class="func-num">04</span>
+            <h2>Delivery &amp; Operations</h2>
+          </header>
+          <p class="func-intro reveal">The work behind the work. The systems that keep promises without manual effort.</p>
+
+          <div class="items">
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                Every new client kicks off the same flurry of welcome emails, folders, and forms, done by hand each time.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Onboarding automation.</strong> A new client triggers the full sequence: welcome message, intake form, scheduling link, and workspace setup, all on its own.
+              </div>
+            </div>
+
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                Invoicing, reminders, and receipts are easy to forget and awkward to chase.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Billing and payment workflows.</strong> Invoices generated, sent, and followed up automatically, with clean records you never have to assemble.
+              </div>
+            </div>
+
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                Information lives in too many places, so reporting means digging through tabs.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Data consolidation and dashboards.</strong> Your numbers pulled into one live view, updated automatically, so you see the state of the business at a glance.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 05 SUPPORT & RETENTION -->
+        <article class="func">
+          <header class="func-head reveal">
+            <span class="func-num">05</span>
+            <h2>Support &amp; Retention</h2>
+          </header>
+          <p class="func-intro reveal">The work of caring for the people already in your world, consistently and well.</p>
+
+          <div class="items">
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                The same questions come in over and over, and answering each one personally drains the day.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Knowledge-based support assistant.</strong> A trained assistant answers common questions in your voice, around the clock, and hands the nuanced ones to a human.
+              </div>
+            </div>
+
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                Happy clients would gladly leave a review or referral, but no one ever asks at the right moment.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Review and referral requests.</strong> Timed, warm requests sent automatically after a milestone, turning good work into social proof.
+              </div>
+            </div>
+
+            <div class="item reveal">
+              <div class="item-problem">
+                <span class="item-tag">The Problem</span>
+                Clients quietly disengage, and you only notice once they're gone.
+              </div>
+              <div class="item-solution">
+                <span class="item-tag">The Solution</span>
+                <strong>Engagement check-ins.</strong> Gentle, well-timed check-ins that keep clients connected and flag the ones who need a personal touch.
+              </div>
+            </div>
+          </div>
+        </article>
+
+    </section>
+
+    <!-- ============================================================
+         A.I.M. CLOSE
+         The framework that makes the menu real.
+         ============================================================ -->
+    <section class="aim-close" data-theme="dark">
+        <p class="eyebrow reveal">How the work gets done</p>
+        <h2 class="reveal">A menu shows what's possible. A framework makes it real.</h2>
+        <p class="aim-lede reveal">Automation only creates value when it fits the business it serves. That is what the A.I.M. Framework is for. We start with who you are and what you actually need, then build accordingly. Technology in service of the work, never the other way around.</p>
+
+        <div class="aim-stages">
+          <div class="stage reveal">
+            <h3>Align</h3>
+            <p>We start with your values, your people, and the real friction points. No automation gets built until we know what it's serving.</p>
+          </div>
+          <div class="stage reveal">
+            <h3>Integrate</h3>
+            <p>We build the right systems into how you already work, so the tools support your team instead of disrupting it.</p>
+          </div>
+          <div class="stage reveal">
+            <h3>Multiply</h3>
+            <p>Once it's working, we expand it, freeing your time and energy for the work only you can do.</p>
+          </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL CTA
+         Same pattern as the homepage final-cta. Routes to /contact.html.
+         ============================================================ -->
+    <section class="final-cta" data-theme="dark" id="contact">
+      <h2 class="cta-headline">
+        Let's find the right<br>
+        <span class="accent-yellow">place to start.</span>
+      </h2>
+
+      <p class="cta-sub">
+        You don't need all of this at once. You need the one or two automations that give you the most room back. That's the conversation.
+      </p>
+
+      <a href="/contact.html" class="pill-cta pill-cta-large">
+        Reach out <span class="plus-icon" aria-hidden="true">+</span>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER (identical to the rest of the site)
+       ============================================================ -->
+  <footer class="site-footer" data-theme="dark">
+
+    <div class="footer-bar">
+      <span class="footer-tagline">
+        <span class="accent-yellow">Identity first.</span> Strategy follows.<br>
+        Build from the inside out.
+      </span>
+      <span class="footer-meta">Dr. Johnna Consulting</span>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/work-with-me.html">Work With Me</a></li>
+          <li><a href="https://drjohnna.riverside.com/" target="_blank" rel="noopener">Podcast</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Free</h5>
+        <ul>
+          <li><a href="https://energyaudit.drjohnna.co">Energy Audit</a></li>
+          <li><a href="https://capacity.drjohnna.co">Hidden Capacity Diagnostic</a></li>
+          <li><a href="https://brandstudio.drjohnna.co">Identity Brand Studio</a></li>
+          <li><a href="https://airesources.drjohnna.co/" target="_blank" rel="noopener">AI Resource Vault</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="mailto:j@doctorjohnna.com">Email</a></li>
+          <li><a href="https://instagram.com/dr.johnna">Instagram</a></li>
+          <li><a href="https://linkedin.com/in/drjohnna">LinkedIn</a></li>
+          <li><a href="https://www.facebook.com/drjohnnabrynn">Facebook</a></li>
+          <li><a href="https://youtube.com/@drjohnna">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <span>&copy; 2026 Dr. Johnna Consulting LLC</span>
+      <span>
+        <a href="/privacy">Privacy</a>
+        ·
+        <a href="/terms">Terms</a>
+        ·
+        <a href="/disclaimer">Disclaimer</a>
+      </span>
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
