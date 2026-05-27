@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI & Automation Menu · Dr. Johnna</title>
-  <meta name="description" content="What's actually possible when AI does real work inside a business. A menu of automations organized by function, paired with the A.I.M. Framework that makes them fit.">
+  <meta name="description" content="The places AI can do real work inside a mission-driven business, paired with the A.I.M. Framework that makes the work hold.">
 
   <!-- Link-only page. Intentionally noindex so it stays a private resource
        Dr. Johnna shares directly with corporate prospects. -->
@@ -12,7 +12,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="AI & Automation Menu · Dr. Johnna">
-  <meta property="og:description" content="What's actually possible when AI does real work inside a business.">
+  <meta property="og:description" content="The places AI can do real work inside a mission-driven business.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://doctorjohnna.com/automations">
 
@@ -81,28 +81,111 @@
       font-weight: 600;
     }
 
-    /* ---------- FUNCTIONS (numbered sections with problem/solution items) ----------
-       Uses the site's default section padding (no internal max-width wrap),
-       so "Lead Generation" lines up with the pull-quote above and the
-       final CTA below. */
+    /* ---------- HOW WE ALIGN (three steps before any automation gets built) ----------
+       Light-themed visual cousin of the A.I.M. stages at the bottom.
+       Three columns on desktop, stack on mobile. */
+    .align-process {
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    .align-process .section-lead {
+      margin-bottom: clamp(40px, 6vw, 64px);
+    }
+
+    .align-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid oklch(from var(--ink) l c h / 0.12);
+    }
+
+    .align-step {
+      padding: 40px 32px 0 0;
+      border-right: 1px solid oklch(from var(--ink) l c h / 0.12);
+    }
+
+    .align-step:nth-child(2) { padding-left: 32px; }
+    .align-step:last-child {
+      border-right: none;
+      padding-left: 32px;
+      padding-right: 0;
+    }
+
+    .align-step .step-num {
+      display: block;
+      font-family: 'Switzer', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+
+    .align-step h3 {
+      font-size: 24px;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .align-step p {
+      font-size: 16px;
+      color: oklch(from var(--ink) l c h / 0.66);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 720px) {
+      .align-steps { grid-template-columns: 1fr; }
+      .align-step,
+      .align-step:nth-child(2),
+      .align-step:last-child {
+        padding: 32px 0;
+        border-right: none;
+        border-bottom: 1px solid oklch(from var(--ink) l c h / 0.12);
+      }
+      .align-step:last-child { border-bottom: none; }
+    }
+
+    /* ---------- FUNCTIONS (collapsible numbered sections) ----------
+       Each function is a <details> element. The <summary> shows the
+       number, title, intro, and a + toggle that rotates to × on open.
+       Items (problem/solution pairs) collapse by default so the menu
+       stays a quick scan, with depth one click away. */
     .functions {
       background: var(--cream);
       color: var(--ink);
-      padding-top: 0;
       padding-bottom: clamp(48px, 8vw, 80px);
+      /* padding-top inherits var(--section-pad-y) from the base
+         section rule in styles.css, matching every other section. */
+    }
+
+    /* Lead-in header inside .functions, before the first .func. */
+    .functions-intro {
+      padding-top: 0;
+      padding-bottom: clamp(24px, 4vw, 40px);
+    }
+
+    .functions-intro .section-lead {
+      margin-top: 16px;
+      max-width: 50ch;
     }
 
     .func {
-      padding: clamp(48px, 7vw, 80px) 0;
       border-bottom: 1px solid oklch(from var(--ink) l c h / 0.12);
     }
 
     .func-head {
       display: flex;
-      align-items: baseline;
+      align-items: flex-start;
       gap: 20px;
-      margin-bottom: 14px;
+      padding: clamp(28px, 4vw, 40px) 0;
+      cursor: pointer;
+      list-style: none;
     }
+
+    /* Hide the default disclosure marker on all browsers. */
+    .func-head::-webkit-details-marker { display: none; }
+    .func-head::marker { content: ''; }
 
     .func-num {
       font-family: 'Switzer', sans-serif;
@@ -110,21 +193,43 @@
       font-weight: 600;
       color: var(--teal);
       letter-spacing: 0.08em;
+      padding-top: 12px;
+      flex-shrink: 0;
     }
 
+    .func-head-body { flex: 1; }
+
     .func-head h2 {
-      font-size: clamp(30px, 4vw, 44px);
+      font-size: clamp(28px, 3.6vw, 40px);
       line-height: 1.05;
+      margin-bottom: 10px;
     }
 
     .func-intro {
       font-size: 17px;
       color: oklch(from var(--ink) l c h / 0.62);
       max-width: 56ch;
-      margin-bottom: clamp(28px, 4vw, 44px);
+      margin: 0;
     }
 
-    .items { display: grid; gap: 0; }
+    .func-toggle {
+      font-family: 'Switzer', sans-serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--teal);
+      line-height: 1;
+      padding-top: 6px;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+
+    .func[open] .func-toggle { transform: rotate(45deg); }
+
+    .items {
+      display: grid;
+      gap: 0;
+      padding-bottom: clamp(28px, 4vw, 40px);
+    }
 
     .item {
       display: grid;
@@ -173,12 +278,12 @@
     /* ---------- A.I.M. CLOSE (dark, three stages) ----------
        Same alignment pattern: no internal wrap, left edge matches
        everything else via the base section padding. */
-    .aim-close {
+    .aim {
       background: var(--ink);
       color: var(--cream);
     }
 
-    .aim-close .eyebrow {
+    .aim .eyebrow {
       font-family: 'Switzer', sans-serif;
       font-size: 13px;
       font-weight: 600;
@@ -188,14 +293,14 @@
       margin-bottom: 28px;
     }
 
-    .aim-close h2 {
+    .aim h2 {
       font-size: clamp(32px, 5vw, 56px);
       line-height: 1.05;
       max-width: 22ch;
       margin-bottom: 24px;
     }
 
-    .aim-close .aim-lede {
+    .aim .aim-lede {
       font-size: 19px;
       max-width: 56ch;
       color: oklch(from var(--cream) l c h / 0.72);
@@ -287,8 +392,39 @@
          ============================================================ -->
     <section class="page-hero" data-theme="light">
       <p class="eyebrow reveal">AI &amp; Automation Menu</p>
-      <h1 class="reveal">What's actually <em>possible</em> when you put AI to work in your business.</h1>
-      <p class="lede reveal">Most automation conversations start with the tool. This one starts with the problem. Below are the places where AI does real work inside a business, organized by the function it serves. <strong>The fundamentals don't change.</strong> Lead generation, marketing, sales, delivery, support. AI makes them stronger. It does not replace them.</p>
+      <h1 class="reveal">What's <em>possible</em> when you put AI to work in your business.</h1>
+      <p class="lede reveal">AI doesn't change what a business is for. It changes what the people inside it have to carry. The real question isn't whether to automate. It's which parts of the work to hand off, and which to protect. Below: the places AI can do real work, organized by function.</p>
+    </section>
+
+    <!-- ============================================================
+         FIRST, WE ALIGN
+         Before any automation gets built, this is the discovery work.
+         Expands the "Align" stage of A.I.M. into a visible process,
+         so corporate readers see consulting depth, not a drop-in service.
+         ============================================================ -->
+    <section class="align-process" data-theme="light">
+      <h2 class="section-headline reveal">First, we Align.</h2>
+      <p class="section-lead reveal">
+        Before any automation gets built, we figure out what's worth building.
+      </p>
+
+      <div class="align-steps">
+        <div class="align-step reveal">
+          <span class="step-num">01 LISTEN</span>
+          <h3>Talk to the people doing the work.</h3>
+          <p>Not just the people choosing the tools. The friction lives where the work happens.</p>
+        </div>
+        <div class="align-step reveal">
+          <span class="step-num">02 MAP</span>
+          <h3>Find what's worth automating.</h3>
+          <p>And what shouldn't be touched. Not every task is a candidate. Some of them are the job.</p>
+        </div>
+        <div class="align-step reveal">
+          <span class="step-num">03 DECIDE</span>
+          <h3>Name success by the people, not the metrics.</h3>
+          <p>The ones who'll live with the result get to define what good looks like before we build it.</p>
+        </div>
+      </div>
     </section>
 
     <!-- ============================================================
@@ -296,7 +432,7 @@
          ============================================================ -->
     <section class="philosophy" data-theme="dark">
       <blockquote class="pull-quote reveal">
-        A business doesn't need more tools. It needs the right work done <span class="accent-yellow">without your hands on every part of it.</span>
+        A business doesn't need more tools. It needs <span class="accent-yellow">systems people keep using.</span>
       </blockquote>
     </section>
 
@@ -308,13 +444,26 @@
          ============================================================ -->
     <section class="functions" data-theme="light">
 
+        <!-- ============================================================
+             MENU INTRO
+             A short lead-in that names what's coming and signals the
+             collapsible behavior of each section below.
+             ============================================================ -->
+        <header class="functions-intro">
+          <h2 class="section-headline reveal">Now, the menu.</h2>
+          <p class="section-lead reveal">Five functions, organized by the work AI can do inside a business. Open any section to see the problems it addresses, and how.</p>
+        </header>
+
         <!-- 01 LEAD GENERATION -->
-        <article class="func">
-          <header class="func-head reveal">
+        <details class="func">
+          <summary class="func-head reveal">
             <span class="func-num">01</span>
-            <h2>Lead Generation</h2>
-          </header>
-          <p class="func-intro reveal">The work of finding the right people, before they ever raise their hand.</p>
+            <div class="func-head-body">
+              <h2>Lead Generation</h2>
+              <p class="func-intro">The work of finding the right people, before they ever raise their hand.</p>
+            </div>
+            <span class="func-toggle" aria-hidden="true">+</span>
+          </summary>
 
           <div class="items">
             <div class="item reveal">
@@ -346,19 +495,22 @@
               </div>
               <div class="item-solution">
                 <span class="item-tag">The Solution</span>
-                <strong>Intelligent lead magnets and quizzes.</strong> Interactive assessments that give the visitor something useful, qualify them as they go, and grow your list with people who actually fit.
+                <strong>Intelligent lead magnets and quizzes.</strong> Interactive assessments that give the visitor something useful, qualify them as they go, and grow your list with people who fit.
               </div>
             </div>
           </div>
-        </article>
+        </details>
 
         <!-- 02 MARKETING & CONTENT -->
-        <article class="func">
-          <header class="func-head reveal">
+        <details class="func">
+          <summary class="func-head reveal">
             <span class="func-num">02</span>
-            <h2>Marketing &amp; Content</h2>
-          </header>
-          <p class="func-intro reveal">The work of staying visible and consistent without it consuming your whole week.</p>
+            <div class="func-head-body">
+              <h2>Marketing &amp; Content</h2>
+              <p class="func-intro">The work of staying visible and consistent without it consuming your whole week.</p>
+            </div>
+            <span class="func-toggle" aria-hidden="true">+</span>
+          </summary>
 
           <div class="items">
             <div class="item reveal">
@@ -379,7 +531,7 @@
               </div>
               <div class="item-solution">
                 <span class="item-tag">The Solution</span>
-                <strong>Scheduling and distribution.</strong> Content is queued, formatted per platform, and published on a cadence you set once. The calendar runs itself.
+                <strong>Scheduling and distribution.</strong> Content is queued, formatted per platform, and published on a cadence you set once. The schedule holds without anyone babysitting it.
               </div>
             </div>
 
@@ -394,15 +546,18 @@
               </div>
             </div>
           </div>
-        </article>
+        </details>
 
         <!-- 03 SALES & OUTREACH -->
-        <article class="func">
-          <header class="func-head reveal">
+        <details class="func">
+          <summary class="func-head reveal">
             <span class="func-num">03</span>
-            <h2>Sales &amp; Outreach</h2>
-          </header>
-          <p class="func-intro reveal">The work of moving the right people toward a yes, without losing the human part.</p>
+            <div class="func-head-body">
+              <h2>Sales &amp; Outreach</h2>
+              <p class="func-intro">The work of moving the right people toward a yes, without losing the human part.</p>
+            </div>
+            <span class="func-toggle" aria-hidden="true">+</span>
+          </summary>
 
           <div class="items">
             <div class="item reveal">
@@ -419,7 +574,7 @@
             <div class="item reveal">
               <div class="item-problem">
                 <span class="item-tag">The Problem</span>
-                Follow-up is where deals are won, and it's the first thing that falls off when you get busy.
+                Follow-up is where deals are won, and it's the first thing that falls off when things get busy.
               </div>
               <div class="item-solution">
                 <span class="item-tag">The Solution</span>
@@ -438,15 +593,18 @@
               </div>
             </div>
           </div>
-        </article>
+        </details>
 
         <!-- 04 DELIVERY & OPERATIONS -->
-        <article class="func">
-          <header class="func-head reveal">
+        <details class="func">
+          <summary class="func-head reveal">
             <span class="func-num">04</span>
-            <h2>Delivery &amp; Operations</h2>
-          </header>
-          <p class="func-intro reveal">The work behind the work. The systems that keep promises without manual effort.</p>
+            <div class="func-head-body">
+              <h2>Delivery &amp; Operations</h2>
+              <p class="func-intro">The work behind the work. The systems that keep promises without manual effort.</p>
+            </div>
+            <span class="func-toggle" aria-hidden="true">+</span>
+          </summary>
 
           <div class="items">
             <div class="item reveal">
@@ -456,7 +614,7 @@
               </div>
               <div class="item-solution">
                 <span class="item-tag">The Solution</span>
-                <strong>Onboarding automation.</strong> A new client triggers the full sequence: welcome message, intake form, scheduling link, and workspace setup, all on its own.
+                <strong>Onboarding automation.</strong> A new client triggers the full sequence: welcome message, intake form, scheduling link, and workspace setup, without anyone chasing it down.
               </div>
             </div>
 
@@ -482,15 +640,18 @@
               </div>
             </div>
           </div>
-        </article>
+        </details>
 
         <!-- 05 SUPPORT & RETENTION -->
-        <article class="func">
-          <header class="func-head reveal">
+        <details class="func">
+          <summary class="func-head reveal">
             <span class="func-num">05</span>
-            <h2>Support &amp; Retention</h2>
-          </header>
-          <p class="func-intro reveal">The work of caring for the people already in your world, consistently and well.</p>
+            <div class="func-head-body">
+              <h2>Support &amp; Retention</h2>
+              <p class="func-intro">The work of caring for the people already in your world, consistently and well.</p>
+            </div>
+            <span class="func-toggle" aria-hidden="true">+</span>
+          </summary>
 
           <div class="items">
             <div class="item reveal">
@@ -518,7 +679,7 @@
             <div class="item reveal">
               <div class="item-problem">
                 <span class="item-tag">The Problem</span>
-                Clients quietly disengage, and you only notice once they're gone.
+                Clients quietly disengage, and it shows up only after they're gone.
               </div>
               <div class="item-solution">
                 <span class="item-tag">The Solution</span>
@@ -526,33 +687,34 @@
               </div>
             </div>
           </div>
-        </article>
+        </details>
 
     </section>
 
     <!-- ============================================================
-         A.I.M. CLOSE
-         The framework that makes the menu real.
+         THE A.I.M. FRAMEWORK
+         Closes the page by naming the framework underneath the work.
+         The reader has seen the discovery (First, we Align) and the
+         menu of automations. A.I.M. ties them into the full arc.
          ============================================================ -->
-    <section class="aim-close" data-theme="dark">
-        <p class="eyebrow reveal">How the work gets done</p>
-        <h2 class="reveal">A menu shows what's possible. A framework makes it real.</h2>
-        <p class="aim-lede reveal">Automation only creates value when it fits the business it serves. That is what the A.I.M. Framework is for. We start with who you are and what you actually need, then build accordingly. Technology in service of the work, never the other way around.</p>
+    <section class="aim" data-theme="dark">
+      <h2 class="reveal">The A.I.M. Framework.</h2>
+      <p class="aim-lede reveal">Strategy, design, integration, and the change management that turns rollouts into adoption. We start with who you are. Then we build. Technology in service of the work, never the other way around.</p>
 
-        <div class="aim-stages">
-          <div class="stage reveal">
-            <h3>Align</h3>
-            <p>We start with your values, your people, and the real friction points. No automation gets built until we know what it's serving.</p>
-          </div>
-          <div class="stage reveal">
-            <h3>Integrate</h3>
-            <p>We build the right systems into how you already work, so the tools support your team instead of disrupting it.</p>
-          </div>
-          <div class="stage reveal">
-            <h3>Multiply</h3>
-            <p>Once it's working, we expand it, freeing your time and energy for the work only you can do.</p>
-          </div>
+      <div class="aim-stages">
+        <div class="stage reveal">
+          <h3>Align</h3>
+          <p>We start with the people, the values, and the real friction. No automation gets built until we know what it's serving.</p>
         </div>
+        <div class="stage reveal">
+          <h3>Integrate</h3>
+          <p>Change management first. Systems are designed to fit how your team already works, alongside the people who'll use them. Adoption built in, not bolted on.</p>
+        </div>
+        <div class="stage reveal">
+          <h3>Multiply</h3>
+          <p>Once it's working and the team is using it, we expand. Time and energy go back to the work only people can do.</p>
+        </div>
+      </div>
     </section>
 
     <!-- ============================================================
