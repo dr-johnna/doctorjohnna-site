@@ -1390,6 +1390,91 @@ section {
 
 
 /* ============================================================
+   12f. LEGAL PAGES (/privacy, /terms, /disclaimer)
+
+   Long-form prose. Comfortable reading measure, generous line height,
+   clear heading hierarchy. Used on doctorjohnna.com and meant to be
+   reusable on future opt-in / sales pages too.
+   ============================================================ */
+
+.legal-page {
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.legal-page-header {
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
+  border-bottom: var(--hairline) solid var(--ink);
+}
+
+.legal-title {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.legal-meta {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-top: var(--space-2);
+}
+
+.legal-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.legal-content h2 {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+  margin-top: var(--space-5);
+}
+
+.legal-content h2:first-child {
+  margin-top: 0;
+}
+
+.legal-content p {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: none;
+}
+
+.legal-content ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-left: 1.25rem;
+}
+
+.legal-content li {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.65;
+  list-style: disc;
+}
+
+.legal-content strong {
+  font-weight: 700;
+}
+
+
+/* ============================================================
    13. FINAL CTA (dark)
    ============================================================ */
 
