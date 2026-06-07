@@ -107,6 +107,9 @@
         <p class="pulse-tagline">Current research behind building with AI without losing your humanity. Posted here weekly by Dr. Johnna.</p>
       </header>
 
+      <!-- Top signup bar: jumps to the form at the bottom. -->
+      <a class="pulse-signup-bar" href="#pulse-signup">Want the highlights in your inbox? New research every week &rarr;</a>
+
       <!-- Finding 1 -->
       <section class="pulse-finding">
         <h2 class="pulse-finding-headline">The drive that built your business can be the thing <span class="accent">draining it</span>.</h2>
@@ -156,6 +159,37 @@
         </div>
         <a class="pulse-read" href="https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends.html" target="_blank" rel="noopener">Read the research →</a>
       </section>
+
+      <!-- Email signup (posts to MailerLite, styled to match the page) -->
+      <div class="pulse-signup ml-subscribe-form ml-subscribe-form-42292654" id="pulse-signup">
+        <h2 class="pulse-signup-title">Want the highlights in your inbox?</h2>
+        <p class="pulse-signup-sub">New research every week. One email, sourced and grounded in psychology.</p>
+        <div class="row-form">
+          <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2382758/forms/189588982563080145/subscribe" data-code="" method="post" target="_blank">
+            <div class="ml-form-formContent">
+              <div class="ml-form-fieldRow ml-last-item">
+                <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                  <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="Your email" autocomplete="email">
+                </div>
+              </div>
+            </div>
+            <input type="hidden" name="ml-submit" value="1">
+            <div class="ml-form-embedSubmit">
+              <button type="submit" class="primary">Send me the Pulse</button>
+              <button disabled="disabled" style="display: none;" type="button" class="loading">
+                <div class="ml-form-embedSubmitLoad"></div>
+                <span class="sr-only">Loading...</span>
+              </button>
+            </div>
+            <input type="hidden" name="anticsrf" value="true">
+          </form>
+          <p class="pulse-signup-note">Unsubscribe anytime.</p>
+        </div>
+        <div class="row-success" style="display:none">
+          <h4>Thank you.</h4>
+          <p>You're on the list. The next edition lands in your inbox.</p>
+        </div>
+      </div>
 
       <!-- Footer nav: browse by category, then past editions dropdown. -->
       <nav class="pulse-more" aria-label="More from the Pulse">
@@ -225,5 +259,16 @@
   </footer>
 
   <script src="/script.js"></script>
+
+  <!-- MailerLite signup form handling -->
+  <script>
+    function ml_webform_success_42292654() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-42292654 .row-success').show();
+      $('.ml-subscribe-form-42292654 .row-form').hide();
+    }
+  </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
+  <script>fetch("https://assets.mailerlite.com/jsonp/2382758/forms/189588982563080145/takel")</script>
 </body>
 </html>

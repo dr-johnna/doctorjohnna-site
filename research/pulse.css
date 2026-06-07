@@ -239,3 +239,112 @@
   color: color-mix(in oklch, var(--ink) 55%, transparent);
   margin-top: var(--space-2);
 }
+
+/* ============================================================
+   EMAIL SIGNUP (top slim bar that scrolls down + bottom form block)
+   The form posts to MailerLite. Styled here to match the page so we
+   do NOT include MailerLite's own stylesheet.
+   ============================================================ */
+/* Top slim bar: an anchor that jumps to the bottom form (#pulse-signup). */
+.pulse-signup-bar {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-size: var(--type-small);
+  font-weight: 700;
+  color: var(--ink);
+  background: color-mix(in oklch, var(--teal) 14%, transparent);
+  border: var(--hairline) solid var(--teal);
+  border-radius: var(--radius-pill);
+  padding: 0.75rem 1.25rem;
+  margin-bottom: var(--space-6);
+  transition: background var(--transition-fast);
+}
+.pulse-signup-bar:hover { background: color-mix(in oklch, var(--teal) 26%, transparent); }
+
+/* Bottom block */
+.pulse-signup {
+  margin-top: var(--space-6);
+  padding: var(--space-6) var(--space-5);
+  border: var(--hairline) solid color-mix(in oklch, var(--ink) 15%, transparent);
+  border-radius: 12px;
+  background: color-mix(in oklch, var(--teal) 7%, transparent);
+  text-align: center;
+}
+.pulse-signup-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: var(--type-section);
+  margin: 0 0 var(--space-2);
+}
+.pulse-signup-sub {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-size: var(--type-body);
+  color: color-mix(in oklch, var(--ink) 72%, transparent);
+  margin: 0 0 var(--space-4);
+}
+.pulse-signup form {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.pulse-signup .ml-form-formContent { flex: 1 1 220px; }
+.pulse-signup input[type="email"] {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-size: var(--type-body);
+  padding: 0.8rem 1.1rem;
+  border: var(--hairline) solid color-mix(in oklch, var(--ink) 25%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--cream);
+  color: var(--ink);
+}
+.pulse-signup .ml-form-embedSubmit { flex: 0 0 auto; }
+.pulse-signup .ml-form-embedSubmit button.primary {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--type-small);
+  background: var(--teal);
+  color: var(--cream);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0.8rem 1.6rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transition-fast);
+}
+.pulse-signup .ml-form-embedSubmit button.primary:hover {
+  background: var(--ink);
+}
+
+/* Reassurance line under the field */
+.pulse-signup-note {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-size: var(--type-small);
+  color: color-mix(in oklch, var(--ink) 45%, transparent);
+  text-align: center;
+  margin: var(--space-3) 0 0;
+}
+.pulse-signup .row-success h4 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: var(--type-subhead);
+  margin: 0 0 var(--space-2);
+}
+.pulse-signup .row-success p {
+  font-family: 'Switzer', system-ui, sans-serif;
+  color: color-mix(in oklch, var(--ink) 72%, transparent);
+  margin: 0;
+}
+/* MailerLite loader spinner (minimal, since we skip their stylesheet) */
+.pulse-signup .ml-form-embedSubmitLoad { display:inline-block; width:20px; height:20px; }
+.pulse-signup .ml-form-embedSubmitLoad:after {
+  content:" "; display:block; width:11px; height:11px; margin:1px; border-radius:50%;
+  border:4px solid #fff; border-color:#fff #fff #fff transparent;
+  animation: ml-spin 1.2s linear infinite;
+}
+@keyframes ml-spin { 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
+.pulse-signup .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
