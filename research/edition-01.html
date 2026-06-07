@@ -165,7 +165,7 @@
         <h2 class="pulse-signup-title">Want the highlights in your inbox?</h2>
         <p class="pulse-signup-sub">New research every week. One email, sourced and grounded in psychology.</p>
         <div class="row-form">
-          <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2382758/forms/189588982563080145/subscribe" data-code="" method="post" target="_blank">
+          <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2382758/forms/189588982563080145/subscribe" data-code="" method="post">
             <div class="ml-form-formContent">
               <div class="ml-form-fieldRow ml-last-item">
                 <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
@@ -260,15 +260,28 @@
 
   <script src="/script.js"></script>
 
-  <!-- MailerLite signup form handling -->
+  <!-- Pulse signup: submit in the background, stay on the page, show thank-you. -->
   <script>
-    function ml_webform_success_42292654() {
-      var $ = ml_jQuery || jQuery;
-      $('.ml-subscribe-form-42292654 .row-success').show();
-      $('.ml-subscribe-form-42292654 .row-form').hide();
-    }
+    (function () {
+      var box = document.getElementById('pulse-signup');
+      if (!box) return;
+      var form = box.querySelector('form.ml-block-form');
+      var rowForm = box.querySelector('.row-form');
+      var rowSuccess = box.querySelector('.row-success');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = form.querySelector('input[name="fields[email]"]');
+        if (!email || !email.value || email.value.indexOf('@') === -1) {
+          email && email.focus();
+          return;
+        }
+        var data = new FormData(form);
+        fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' }).catch(function(){});
+        if (rowForm) rowForm.style.display = 'none';
+        if (rowSuccess) rowSuccess.style.display = 'block';
+      });
+    })();
   </script>
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
-  <script>fetch("https://assets.mailerlite.com/jsonp/2382758/forms/189588982563080145/takel")</script>
 </body>
 </html>
