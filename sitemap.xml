@@ -26,9 +26,15 @@
   </url>
   <url>
     <loc>https://doctorjohnna.com/research</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://doctorjohnna.com/research/edition-04</loc>
+    <lastmod>2026-06-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://doctorjohnna.com/research/edition-03</loc>
@@ -50,19 +56,19 @@
   </url>
   <url>
     <loc>https://doctorjohnna.com/research/identity-angle</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doctorjohnna.com/research/energy-cost</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://doctorjohnna.com/research/alignment-check</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-06-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
