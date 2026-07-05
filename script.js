@@ -140,6 +140,56 @@ if (contactForm) {
    all elements are immediately revealed (no observer).
    ============================================================ */
 
+/* ============================================================
+   3b. /builds STICKY SECTION MENU
+
+   Two small jobs, both purely additive (the page reads fine
+   without them):
+
+   1. Keep the sticky anchor row pinned exactly below the site
+      header, whatever height the header takes at the current
+      screen size.
+   2. Scroll spy: highlight the menu link for the section the
+      visitor is currently reading.
+   ============================================================ */
+
+const anchorRow = document.querySelector('.builds-anchor-row');
+
+if (anchorRow) {
+
+  const siteHeader = document.querySelector('.site-header');
+
+  // 1. Match the sticky offset to the real header height.
+  const setAnchorOffset = () => {
+    if (siteHeader) anchorRow.style.top = siteHeader.offsetHeight + 'px';
+  };
+  setAnchorOffset();
+  window.addEventListener('resize', setAnchorOffset);
+
+  // 2. Scroll spy. The menu links point at section ids; the current
+  //    section is the last one whose top has passed under the
+  //    sticky bars.
+  const spyLinks = Array.from(anchorRow.querySelectorAll('a[href^="#"]'));
+  const spyTargets = spyLinks
+    .map((link) => document.getElementById(link.hash.slice(1)))
+    .filter(Boolean);
+
+  const updateSpy = () => {
+    const offset = (siteHeader ? siteHeader.offsetHeight : 0) + anchorRow.offsetHeight + 24;
+    let current = -1;
+    spyTargets.forEach((target, i) => {
+      if (target.getBoundingClientRect().top <= offset) current = i;
+    });
+    spyLinks.forEach((link, i) => {
+      link.classList.toggle('is-current', i === current);
+    });
+  };
+
+  updateSpy();
+  window.addEventListener('scroll', updateSpy, { passive: true });
+}
+
+
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!prefersReducedMotion && 'IntersectionObserver' in window) {

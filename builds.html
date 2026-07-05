@@ -72,22 +72,29 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#systems" class="pill-cta">
-            See the systems <span class="plus-icon" aria-hidden="true">+</span>
+          <a href="#tools" class="pill-cta">
+            See the builds <span class="plus-icon" aria-hidden="true">+</span>
           </a>
           <a href="#start" class="text-link">Start your build ↓</a>
         </div>
       </div>
-
-      <!-- Quiet in-page anchor row. Not a second sticky nav, just a
-           one-line map of the page for people who want to jump. -->
-      <nav class="builds-anchor-row" aria-label="Page sections">
-        <a href="#systems">Systems</a>
-        <a href="#tools">Tools</a>
-        <a href="#automations">Automations</a>
-        <a href="#start">Work With Me</a>
-      </nav>
     </section>
+
+    <!-- ============================================================
+         STICKY SECTION MENU
+         A quiet anchor row that pins below the site header for the
+         whole page, so visitors always know where they are. It is a
+         direct child of <main> (not inside a section) so position:
+         sticky holds all the way down. script.js keeps its offset
+         matched to the header height and highlights the current
+         section. Without JS it still renders as a normal anchor row.
+         ============================================================ -->
+    <nav class="builds-anchor-row" aria-label="Page sections">
+      <a href="#tools">Tools</a>
+      <a href="#automations">Automations</a>
+      <a href="#systems">Systems</a>
+      <a href="#start">Build for Me</a>
+    </nav>
 
     <!-- ============================================================
          THE NUMBERS STRIP (cream, ruled band)
@@ -112,14 +119,299 @@
     </section>
 
     <!-- ============================================================
-         SECTION 01: FULL SYSTEMS, NOT JUST TOOLS (cream)
-         The flagship section. Four systems, each with a flow diagram.
-         Diagrams are pure HTML/CSS. Human checkpoints get a teal
-         outline and an uppercase label: that detail answers the
-         corporate question about AI running unsupervised.
+         SECTION 01: BRING IN LEADS WHILE YOU SLEEP (sand)
+         The Tools run starts here: single tools first, so a new
+         visitor can ease in before meeting the full systems below.
+         Three exhibits, 2-1 asymmetric grid.
+         ============================================================ -->
+    <section class="builds-section" data-theme="sand" id="tools">
+      <p class="eyebrow"><span class="eyebrow-num">01.</span> Lead Generation</p>
+      <h2 class="section-headline">Bring in leads while you sleep.</h2>
+      <p class="section-lead">
+        Most businesses do not have a visibility problem. They have a capture problem. People visit, then vanish. These tools turn quiet visitors into named leads by giving them something worth exchanging an email for.
+      </p>
+
+      <div class="exhibit-grid exhibit-grid-21">
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Entrepreneurial Strengths Health Scan</h3>
+          <p class="exhibit-desc">An interactive assessment that qualifies leads while it serves them.</p>
+          <a href="https://strengths.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">The Energy Audit</h3>
+          <p class="exhibit-desc">A psychology-backed self-assessment that shows people where their energy actually goes.</p>
+          <a href="https://energyaudit.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">AI Identity Blueprint</h3>
+          <p class="exhibit-desc">A signature brand voice tool. Deep identity questions in, a complete brand voice foundation out.</p>
+          <a href="https://aiblueprint.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 02: TURN INTEREST INTO CLIENTS (cream)
+         Four exhibits. The proposal generator carries a mini flow
+         instead of a link since it has no public URL.
+         ============================================================ -->
+    <section class="builds-section" data-theme="light">
+      <p class="eyebrow"><span class="eyebrow-num">02.</span> Sales</p>
+      <h2 class="section-headline">Turn interest into clients.</h2>
+      <p class="section-lead">
+        Interest is not income. The gap between curiosity and commitment closes with clear offers, smart intake, and a sales process that respects your client's intelligence. These builds close that gap.
+      </p>
+
+      <div class="exhibit-grid exhibit-grid-2x2">
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">The Aligned Business Accelerator sales page</h3>
+          <p class="exhibit-desc">A full conversion page for an eight-week program.</p>
+          <a href="https://aligned.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Corporate Proposal Generator</h3>
+          <p class="exhibit-desc">Call notes in. A branded live proposal with a payment button out, the same day.</p>
+          <ol class="flow flow-mini" aria-label="How the proposal generator works">
+            <li class="flow-node">Call notes</li>
+            <li class="flow-node">Branded proposal</li>
+            <li class="flow-node">Accept and begin</li>
+          </ol>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Brand Audit Application</h3>
+          <p class="exhibit-desc">A smart application that qualifies before it books.</p>
+          <a href="https://brandaudit.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Services and Trainings catalogs</h3>
+          <p class="exhibit-desc">Interactive service menus with favorites and proposal requests built in.</p>
+          <p class="exhibit-links">
+            <a href="https://services.drjohnna.co" class="view-live" target="_blank" rel="noopener">Services <span aria-hidden="true">↗</span></a>
+            <a href="https://trainings.drjohnna.co" class="view-live" target="_blank" rel="noopener">Trainings <span aria-hidden="true">↗</span></a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 03: DELIVER AN EXPERIENCE CLIENTS REMEMBER (sand)
+         Three exhibits, 1-2 asymmetric grid. The workbook is
+         deliberately unlinked: client access only.
+         ============================================================ -->
+    <section class="builds-section" data-theme="sand">
+      <p class="eyebrow"><span class="eyebrow-num">03.</span> Delivery</p>
+      <h2 class="section-headline">Deliver an experience clients remember.</h2>
+      <p class="section-lead">
+        The work you deliver is your best marketing. Interactive workbooks, coaching tools, and client systems make the paid experience feel as premium as the promise.
+      </p>
+
+      <div class="exhibit-grid exhibit-grid-12">
+        <article class="exhibit-card exhibit-card-wide">
+          <h3 class="exhibit-name">AI Identity Advantage Workbook</h3>
+          <p class="exhibit-desc">A fully interactive workshop workbook. Not a PDF. An experience.</p>
+          <div class="shot-placeholder" role="img" aria-label="Screenshot of the AI Identity Advantage interactive workbook, coming soon.">
+            <span class="shot-placeholder-label">Screenshot coming</span>
+          </div>
+          <p class="exhibit-caption">Client access only.</p>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Gold Offer Coach</h3>
+          <p class="exhibit-desc">An AI coaching bot that walks entrepreneurs through building their signature offer.</p>
+          <a href="https://goldoffer.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Client Feedback System</h3>
+          <p class="exhibit-desc">Structured feedback that clients actually complete.</p>
+          <a href="https://feedback.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 04: NEVER RUN OUT OF CONTENT (cream)
+         Lead exhibit points down to the Identity Content System in
+         the Systems section. Then the working parts.
+         ============================================================ -->
+    <section class="builds-section" data-theme="light">
+      <p class="eyebrow"><span class="eyebrow-num">04.</span> Content</p>
+      <h2 class="section-headline">Never run out of content.</h2>
+      <p class="section-lead">
+        Content is where most owners lose their week. These systems create it, shape it, and publish it while protecting the one thing AI cannot generate: your voice.
+      </p>
+
+      <p class="lead-exhibit">
+        The full engine lives below: <a href="#identity-content-system" class="inline-link">the Identity Content System</a>. These are the working parts.
+      </p>
+
+      <div class="exhibit-grid exhibit-grid-21">
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Carousel Autopilot</h3>
+          <p class="exhibit-desc">A topic in. Finished, on-brand carousel slides out, rendered automatically and ready to post.</p>
+          <a href="https://carousel.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Human-First AI Pulse</h3>
+          <p class="exhibit-desc">A research digest with a complete publishing pipeline behind it. Sources gathered, written in brand voice, formatted, shipped.</p>
+          <div class="shot-placeholder" role="img" aria-label="Screenshot of a Human-First AI Pulse issue, coming soon.">
+            <span class="shot-placeholder-label">Screenshot coming</span>
+          </div>
+          <a href="/research" class="view-live">Read the latest issue <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="exhibit-card exhibit-card-quiet">
+          <h3 class="exhibit-name">Podcast Post-Production</h3>
+          <p class="exhibit-desc"><a href="#podcast-pipeline" class="inline-link">See the full pipeline in Systems.</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 05: RUN SMOOTHER BEHIND THE SCENES (sand)
+         Four exhibits, 2x2. Invoice automation uses a mini flow
+         instead of a screenshot.
+         ============================================================ -->
+    <section class="builds-section" data-theme="sand">
+      <p class="eyebrow"><span class="eyebrow-num">05.</span> Operations</p>
+      <h2 class="section-headline">Run smoother behind the scenes.</h2>
+      <p class="section-lead">
+        The invisible work is what burns people out. Dashboards, intake systems, and automations that carry the admin so your energy goes where it earns.
+      </p>
+
+      <div class="exhibit-grid exhibit-grid-2x2">
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Podcast Planning Dashboard</h3>
+          <p class="exhibit-desc">Guests, topics, and episodes in one live workspace.</p>
+          <div class="shot-placeholder" role="img" aria-label="Screenshot of the podcast planning dashboard, coming soon.">
+            <span class="shot-placeholder-label">Screenshot coming</span>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Time and Focus Audit Dashboard</h3>
+          <p class="exhibit-desc">Thirty days of calendar data, turned into an honest picture of where the time went.</p>
+          <div class="shot-placeholder" role="img" aria-label="Screenshot of the time and focus audit dashboard, coming soon.">
+            <span class="shot-placeholder-label">Screenshot coming</span>
+          </div>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Invoice Automation</h3>
+          <p class="exhibit-desc">Bill a client in a sentence. A compliant, branded PDF comes out.</p>
+          <ol class="flow flow-mini" aria-label="How invoice automation works">
+            <li class="flow-node">One sentence</li>
+            <li class="flow-node">Branded PDF invoice</li>
+            <li class="flow-node">Sent and filed</li>
+          </ol>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Smart Intake Forms</h3>
+          <p class="exhibit-desc">Podcast guest requests, client intake, structured feedback. Small builds that remove whole categories of email.</p>
+          <p class="exhibit-links">
+            <a href="https://guest.drjohnna.co" class="view-live" target="_blank" rel="noopener">Guest form <span aria-hidden="true">↗</span></a>
+            <a href="https://newsite.drjohnna.co" class="view-live" target="_blank" rel="noopener">Client intake <span aria-hidden="true">↗</span></a>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 06: CUSTOM APPS (cream)
+         Five exhibits in a varied 3-2 rhythm. Private builds get
+         screenshot placeholders and a caption instead of links.
+         ============================================================ -->
+    <section class="builds-section" data-theme="light">
+      <p class="eyebrow"><span class="eyebrow-num">06.</span> Custom Apps</p>
+      <h2 class="section-headline">Custom apps, built for exactly what you need.</h2>
+      <p class="section-lead">
+        The idea in your head does not require a development team anymore. A workout app. A fishing companion. A niche education site. A complete business website, live at its own domain. If it is specific to you, it can be built.
+      </p>
+
+      <div class="exhibit-grid exhibit-grid-32">
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Custom Workout App</h3>
+          <p class="exhibit-desc">A personal training app built around one person's real routine.</p>
+          <div class="shot-placeholder" role="img" aria-label="Screenshots of the custom workout app, coming soon.">
+            <span class="shot-placeholder-label">Screenshot coming</span>
+          </div>
+          <p class="exhibit-caption">Private build.</p>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Fishing Companion App</h3>
+          <p class="exhibit-desc">Conditions, spots, and trip logging for the Florida Keys.</p>
+          <div class="shot-placeholder" role="img" aria-label="Screenshots of the fishing companion app, coming soon.">
+            <span class="shot-placeholder-label">Screenshot coming</span>
+          </div>
+          <p class="exhibit-caption">Private build.</p>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">Peptide Education Site</h3>
+          <p class="exhibit-desc">A complete niche education and affiliate site.</p>
+          <a href="https://pep.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="exhibit-card exhibit-card-quiet">
+          <h3 class="exhibit-name">Richardson Media</h3>
+          <p class="exhibit-desc"><a href="#richardson-media" class="inline-link">See the full engagement in Systems.</a></p>
+        </article>
+
+        <article class="exhibit-card">
+          <h3 class="exhibit-name">AI Resource Vault</h3>
+          <p class="exhibit-desc">A curated, categorized library of vetted AI tools.</p>
+          <a href="https://airesources.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 07: AUTOMATIONS EVERY BUSINESS NEEDS (sand)
+         Compact two-column text list. No cards, no icons. Thin rules
+         between items. Closes with the delivery-capacity statement.
+         ============================================================ -->
+    <section class="builds-section" data-theme="sand" id="automations">
+      <p class="eyebrow"><span class="eyebrow-num">07.</span> Automations</p>
+      <h2 class="section-headline">Every business runs the same funnel. These are the automations that keep it moving.</h2>
+
+      <ol class="auto-list">
+        <li>Lead follow-up that responds in minutes, not days.</li>
+        <li>Appointment scheduling and reminders that end no-shows.</li>
+        <li>Review and testimonial requests triggered after delivery.</li>
+        <li>Customer service bots trained on your business, answering around the clock.</li>
+        <li>CRM updates that happen from your email and calendar. No data entry.</li>
+        <li>Client onboarding sequences that make day one feel effortless.</li>
+        <li>Invoice and payment reminders matched to each client's history.</li>
+        <li>Inbox triage that sorts, drafts, and flags only what needs you.</li>
+        <li>One asset repurposed into ten.</li>
+        <li>Your numbers pulled into one honest dashboard.</li>
+      </ol>
+
+      <div class="auto-close">
+        <p>If it belongs in your business and it repeats, it can be automated.</p>
+        <p>Designed by me. Delivered with my development team when the build calls for it.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 08: FULL SYSTEMS, NOT JUST TOOLS (cream)
+         The flagship section, placed as the climax after the tools
+         and automations so it reads as "everything above, working
+         together." Four systems, each with a flow diagram. Diagrams
+         are pure HTML/CSS. Human checkpoints get a teal outline and
+         an uppercase label: that detail answers the corporate
+         question about AI running unsupervised.
          ============================================================ -->
     <section class="builds-section" data-theme="light" id="systems">
-      <p class="eyebrow"><span class="eyebrow-num">01.</span> Systems</p>
+      <p class="eyebrow"><span class="eyebrow-num">08.</span> Systems</p>
       <h2 class="section-headline">Full systems, not just tools.</h2>
       <p class="section-lead">
         Anyone can show you an AI tool. What most businesses actually need is architecture. Systems where the pieces talk to each other, work moves without anyone pushing it, and one input becomes many outputs. These are the builds that run entire operations. Mine included.
@@ -192,287 +484,6 @@
     </section>
 
     <!-- ============================================================
-         SECTION 02: BRING IN LEADS WHILE YOU SLEEP (sand)
-         Three exhibits, 2-1 asymmetric grid. Tools anchor starts here.
-         ============================================================ -->
-    <section class="builds-section" data-theme="sand" id="tools">
-      <p class="eyebrow"><span class="eyebrow-num">02.</span> Lead Generation</p>
-      <h2 class="section-headline">Bring in leads while you sleep.</h2>
-      <p class="section-lead">
-        Most businesses do not have a visibility problem. They have a capture problem. People visit, then vanish. These tools turn quiet visitors into named leads by giving them something worth exchanging an email for.
-      </p>
-
-      <div class="exhibit-grid exhibit-grid-21">
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Entrepreneurial Strengths Health Scan</h3>
-          <p class="exhibit-desc">An interactive assessment that qualifies leads while it serves them.</p>
-          <a href="https://strengths.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">The Energy Audit</h3>
-          <p class="exhibit-desc">A psychology-backed self-assessment that shows people where their energy actually goes.</p>
-          <a href="https://energyaudit.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">AI Identity Blueprint</h3>
-          <p class="exhibit-desc">A signature brand voice tool. Deep identity questions in, a complete brand voice foundation out.</p>
-          <a href="https://aiblueprint.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 03: TURN INTEREST INTO CLIENTS (cream)
-         Four exhibits. The proposal generator carries a mini flow
-         instead of a link since it has no public URL.
-         ============================================================ -->
-    <section class="builds-section" data-theme="light">
-      <p class="eyebrow"><span class="eyebrow-num">03.</span> Sales</p>
-      <h2 class="section-headline">Turn interest into clients.</h2>
-      <p class="section-lead">
-        Interest is not income. The gap between curiosity and commitment closes with clear offers, smart intake, and a sales process that respects your client's intelligence. These builds close that gap.
-      </p>
-
-      <div class="exhibit-grid exhibit-grid-2x2">
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">The Aligned Business Accelerator sales page</h3>
-          <p class="exhibit-desc">A full conversion page for an eight-week program.</p>
-          <a href="https://aligned.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Corporate Proposal Generator</h3>
-          <p class="exhibit-desc">Call notes in. A branded live proposal with a payment button out, the same day.</p>
-          <ol class="flow flow-mini" aria-label="How the proposal generator works">
-            <li class="flow-node">Call notes</li>
-            <li class="flow-node">Branded proposal</li>
-            <li class="flow-node">Accept and begin</li>
-          </ol>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Brand Audit Application</h3>
-          <p class="exhibit-desc">A smart application that qualifies before it books.</p>
-          <a href="https://brandaudit.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Services and Trainings catalogs</h3>
-          <p class="exhibit-desc">Interactive service menus with favorites and proposal requests built in.</p>
-          <p class="exhibit-links">
-            <a href="https://services.drjohnna.co" class="view-live" target="_blank" rel="noopener">Services <span aria-hidden="true">↗</span></a>
-            <a href="https://trainings.drjohnna.co" class="view-live" target="_blank" rel="noopener">Trainings <span aria-hidden="true">↗</span></a>
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 04: DELIVER AN EXPERIENCE CLIENTS REMEMBER (sand)
-         Three exhibits, 1-2 asymmetric grid. The workbook is
-         deliberately unlinked: client access only.
-         ============================================================ -->
-    <section class="builds-section" data-theme="sand">
-      <p class="eyebrow"><span class="eyebrow-num">04.</span> Delivery</p>
-      <h2 class="section-headline">Deliver an experience clients remember.</h2>
-      <p class="section-lead">
-        The work you deliver is your best marketing. Interactive workbooks, coaching tools, and client systems make the paid experience feel as premium as the promise.
-      </p>
-
-      <div class="exhibit-grid exhibit-grid-12">
-        <article class="exhibit-card exhibit-card-wide">
-          <h3 class="exhibit-name">AI Identity Advantage Workbook</h3>
-          <p class="exhibit-desc">A fully interactive workshop workbook. Not a PDF. An experience.</p>
-          <div class="shot-placeholder" role="img" aria-label="Screenshot of the AI Identity Advantage interactive workbook, coming soon.">
-            <span class="shot-placeholder-label">Screenshot coming</span>
-          </div>
-          <p class="exhibit-caption">Client access only.</p>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Gold Offer Coach</h3>
-          <p class="exhibit-desc">An AI coaching bot that walks entrepreneurs through building their signature offer.</p>
-          <a href="https://goldoffer.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Client Feedback System</h3>
-          <p class="exhibit-desc">Structured feedback that clients actually complete.</p>
-          <a href="https://feedback.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 05: NEVER RUN OUT OF CONTENT (cream)
-         Lead exhibit points back up to the Identity Content System.
-         Then the working parts.
-         ============================================================ -->
-    <section class="builds-section" data-theme="light">
-      <p class="eyebrow"><span class="eyebrow-num">05.</span> Content</p>
-      <h2 class="section-headline">Never run out of content.</h2>
-      <p class="section-lead">
-        Content is where most owners lose their week. These systems create it, shape it, and publish it while protecting the one thing AI cannot generate: your voice.
-      </p>
-
-      <p class="lead-exhibit">
-        The full engine lives above: <a href="#identity-content-system" class="inline-link">the Identity Content System</a>. These are the working parts.
-      </p>
-
-      <div class="exhibit-grid exhibit-grid-21">
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Carousel Autopilot</h3>
-          <p class="exhibit-desc">A topic in. Finished, on-brand carousel slides out, rendered automatically and ready to post.</p>
-          <a href="https://carousel.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Human-First AI Pulse</h3>
-          <p class="exhibit-desc">A research digest with a complete publishing pipeline behind it. Sources gathered, written in brand voice, formatted, shipped.</p>
-          <div class="shot-placeholder" role="img" aria-label="Screenshot of a Human-First AI Pulse issue, coming soon.">
-            <span class="shot-placeholder-label">Screenshot coming</span>
-          </div>
-          <a href="/research" class="view-live">Read the latest issue <span aria-hidden="true">→</span></a>
-        </article>
-
-        <article class="exhibit-card exhibit-card-quiet">
-          <h3 class="exhibit-name">Podcast Post-Production</h3>
-          <p class="exhibit-desc"><a href="#podcast-pipeline" class="inline-link">See the full pipeline in Systems.</a></p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 06: RUN SMOOTHER BEHIND THE SCENES (sand)
-         Four exhibits, 2x2. Invoice automation uses a mini flow
-         instead of a screenshot.
-         ============================================================ -->
-    <section class="builds-section" data-theme="sand">
-      <p class="eyebrow"><span class="eyebrow-num">06.</span> Operations</p>
-      <h2 class="section-headline">Run smoother behind the scenes.</h2>
-      <p class="section-lead">
-        The invisible work is what burns people out. Dashboards, intake systems, and automations that carry the admin so your energy goes where it earns.
-      </p>
-
-      <div class="exhibit-grid exhibit-grid-2x2">
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Podcast Planning Dashboard</h3>
-          <p class="exhibit-desc">Guests, topics, and episodes in one live workspace.</p>
-          <div class="shot-placeholder" role="img" aria-label="Screenshot of the podcast planning dashboard, coming soon.">
-            <span class="shot-placeholder-label">Screenshot coming</span>
-          </div>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Time and Focus Audit Dashboard</h3>
-          <p class="exhibit-desc">Thirty days of calendar data, turned into an honest picture of where the time went.</p>
-          <div class="shot-placeholder" role="img" aria-label="Screenshot of the time and focus audit dashboard, coming soon.">
-            <span class="shot-placeholder-label">Screenshot coming</span>
-          </div>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Invoice Automation</h3>
-          <p class="exhibit-desc">Bill a client in a sentence. A compliant, branded PDF comes out.</p>
-          <ol class="flow flow-mini" aria-label="How invoice automation works">
-            <li class="flow-node">One sentence</li>
-            <li class="flow-node">Branded PDF invoice</li>
-            <li class="flow-node">Sent and filed</li>
-          </ol>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Smart Intake Forms</h3>
-          <p class="exhibit-desc">Podcast guest requests, client intake, structured feedback. Small builds that remove whole categories of email.</p>
-          <p class="exhibit-links">
-            <a href="https://guest.drjohnna.co" class="view-live" target="_blank" rel="noopener">Guest form <span aria-hidden="true">↗</span></a>
-            <a href="https://newsite.drjohnna.co" class="view-live" target="_blank" rel="noopener">Client intake <span aria-hidden="true">↗</span></a>
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 07: CUSTOM APPS (cream)
-         Five exhibits in a varied 3-2 rhythm. Private builds get
-         screenshot placeholders and a caption instead of links.
-         ============================================================ -->
-    <section class="builds-section" data-theme="light">
-      <p class="eyebrow"><span class="eyebrow-num">07.</span> Custom Apps</p>
-      <h2 class="section-headline">Custom apps, built for exactly what you need.</h2>
-      <p class="section-lead">
-        The idea in your head does not require a development team anymore. A workout app. A fishing companion. A niche education site. A complete business website, live at its own domain. If it is specific to you, it can be built.
-      </p>
-
-      <div class="exhibit-grid exhibit-grid-32">
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Custom Workout App</h3>
-          <p class="exhibit-desc">A personal training app built around one person's real routine.</p>
-          <div class="shot-placeholder" role="img" aria-label="Screenshots of the custom workout app, coming soon.">
-            <span class="shot-placeholder-label">Screenshot coming</span>
-          </div>
-          <p class="exhibit-caption">Private build.</p>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Fishing Companion App</h3>
-          <p class="exhibit-desc">Conditions, spots, and trip logging for the Florida Keys.</p>
-          <div class="shot-placeholder" role="img" aria-label="Screenshots of the fishing companion app, coming soon.">
-            <span class="shot-placeholder-label">Screenshot coming</span>
-          </div>
-          <p class="exhibit-caption">Private build.</p>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">Peptide Education Site</h3>
-          <p class="exhibit-desc">A complete niche education and affiliate site.</p>
-          <a href="https://pep.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
-        </article>
-
-        <article class="exhibit-card exhibit-card-quiet">
-          <h3 class="exhibit-name">Richardson Media</h3>
-          <p class="exhibit-desc"><a href="#richardson-media" class="inline-link">See the full engagement in Systems.</a></p>
-        </article>
-
-        <article class="exhibit-card">
-          <h3 class="exhibit-name">AI Resource Vault</h3>
-          <p class="exhibit-desc">A curated, categorized library of vetted AI tools.</p>
-          <a href="https://airesources.drjohnna.co" class="view-live" target="_blank" rel="noopener">View live <span aria-hidden="true">↗</span></a>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SECTION 08: AUTOMATIONS EVERY BUSINESS NEEDS (cream)
-         Compact two-column text list. No cards, no icons. Thin rules
-         between items. Closes with the delivery-capacity statement.
-         ============================================================ -->
-    <section class="builds-section" data-theme="light" id="automations">
-      <p class="eyebrow"><span class="eyebrow-num">08.</span> Automations</p>
-      <h2 class="section-headline">Every business runs the same funnel. These are the automations that keep it moving.</h2>
-
-      <ol class="auto-list">
-        <li>Lead follow-up that responds in minutes, not days.</li>
-        <li>Appointment scheduling and reminders that end no-shows.</li>
-        <li>Review and testimonial requests triggered after delivery.</li>
-        <li>Customer service bots trained on your business, answering around the clock.</li>
-        <li>CRM updates that happen from your email and calendar. No data entry.</li>
-        <li>Client onboarding sequences that make day one feel effortless.</li>
-        <li>Invoice and payment reminders matched to each client's history.</li>
-        <li>Inbox triage that sorts, drafts, and flags only what needs you.</li>
-        <li>One asset repurposed into ten.</li>
-        <li>Your numbers pulled into one honest dashboard.</li>
-      </ol>
-
-      <div class="auto-close">
-        <p>If it belongs in your business and it repeats, it can be automated.</p>
-        <p>Designed by me. Delivered with my development team when the build calls for it.</p>
-      </div>
-    </section>
-
-    <!-- ============================================================
          SECTION 09: BUILT AROUND WHO YOU ARE (dark)
          The identity closer. Matches the homepage philosophy section:
          a dark surface, an editorial pull quote, yellow accent (the
@@ -509,7 +520,7 @@
       </a>
 
       <p class="cta-secondary">
-        Or <a href="https://trainings.drjohnna.co" target="_blank" rel="noopener" class="text-link-inline">explore corporate trainings</a>.
+        Or <a href="/work-with-me.html" class="text-link-inline">see all the ways to work with me</a>.
       </p>
     </section>
 

@@ -1527,15 +1527,22 @@ section {
   opacity: 0.85;
 }
 
-/* Quiet in-page anchor row under the hero. One thin rule above,
-   small uppercase links. Not sticky: the site header handles nav. */
+/* Sticky section menu. Pins directly below the site header for the
+   whole page so visitors always know where they are. Lives as a
+   direct child of <main>, so position: sticky holds all the way
+   down. The top offset defaults to the desktop header height;
+   script.js keeps it matched to the real header height on load and
+   resize. Without JS it still works as a normal anchor row. */
 .builds-anchor-row {
+  position: sticky;
+  top: 53px;
+  z-index: 40;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2) var(--space-5);
-  margin-top: var(--space-6);
-  padding-top: var(--space-3);
-  border-top: var(--hairline) solid var(--ink);
+  padding: var(--space-3) var(--section-pad-x);
+  background: var(--cream);
+  border-bottom: var(--hairline) solid var(--ink);
 }
 
 .builds-anchor-row a {
@@ -1551,6 +1558,20 @@ section {
 .builds-anchor-row a:hover {
   opacity: 1;
   color: var(--teal);
+}
+
+/* Current section highlight, set by the scroll spy in script.js. */
+.builds-anchor-row a.is-current {
+  opacity: 1;
+  color: var(--teal);
+}
+
+/* Anchored targets scroll to rest below the sticky header + menu
+   instead of hiding underneath them. */
+.builds-section,
+.flow-card,
+.final-cta {
+  scroll-margin-top: 7.5rem;
 }
 
 /* --- Numbers strip --- */
