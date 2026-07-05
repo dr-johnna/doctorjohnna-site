@@ -2016,6 +2016,27 @@ section {
   .stat-list {
     gap: var(--space-4) var(--space-6);
   }
+
+  /* The section menu holds ten items, so on small screens it
+     becomes a single swipeable row instead of wrapping into a
+     tall sticky block. The scrollbar is hidden; the row still
+     scrolls by touch. */
+  .builds-anchor-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: var(--space-4);
+  }
+
+  .builds-anchor-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .builds-anchor-row a {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
 }
 
 
