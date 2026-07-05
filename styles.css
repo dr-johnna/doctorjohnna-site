@@ -1527,6 +1527,56 @@ section {
   opacity: 0.85;
 }
 
+/* The positioning line in the hero. DM Serif italic, a step larger
+   than body, with a single teal keyword. */
+.builds-method {
+  font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+  line-height: 1.4;
+  max-width: none;
+}
+
+/* "The psychology" note under each section intro. A small teal
+   uppercase label over one italic line of behavioral science.
+   This is the thread that separates the page from a tech catalog. */
+.psych-note {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-6);
+  max-width: 44rem;
+}
+
+/* When it follows the section lead, pull it closer so the pair
+   reads as one thought. */
+.section-lead + .psych-note {
+  margin-top: calc(-1 * var(--space-4));
+}
+
+.psych-label {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.psych-note em {
+  font-size: 1.1rem;
+  line-height: 1.45;
+}
+
+/* The human-judgment callout in the Systems section. Teal bar,
+   like the story callout on /about. */
+.human-note {
+  border-left: 3px solid var(--teal);
+  padding: var(--space-2) 0 var(--space-2) var(--space-4);
+  margin-bottom: var(--space-6);
+  max-width: 44rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
 /* Sticky section menu. Pins directly below the site header for the
    whole page so visitors always know where they are. Lives as a
    direct child of <main>, so position: sticky holds all the way
