@@ -1953,6 +1953,26 @@ section {
   text-transform: uppercase;
 }
 
+/* Real screenshots, once supplied. Same footprint as the
+   placeholder: capped width, thin ink border, 16:10 frame. */
+.shot-link {
+  display: block;
+  width: 100%;
+  max-width: 34rem;
+}
+
+.shot-img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  display: block;
+}
+
+.shot-link:hover .shot-img {
+  border-color: var(--teal);
+}
+
 /* --- Automations list (Section 08) ---
    Two-column ruled text list. No cards, no icons. Teal counters. */
 .auto-list {
