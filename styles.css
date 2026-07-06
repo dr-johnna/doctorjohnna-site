@@ -108,6 +108,12 @@ ul {
   --teal: oklch(0.72 0.08 190);     /* #53C5B3 */
   --yellow: oklch(0.94 0.16 105);   /* #F0F87C */
 
+  /* Deeper teal for small TEXT on cream/sand. The bright teal above
+     fails readability contrast for body-size text (1.7:1 on sand);
+     this one passes on both surfaces. Bright teal stays for graphics:
+     borders, arrows, large display numerals. */
+  --teal-text: #227065;
+
   /* Spacing scale */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -1497,7 +1503,7 @@ section {
 }
 
 .eyebrow-num {
-  color: var(--accent);
+  color: var(--teal-text);
   font-weight: 700;
 }
 
@@ -1535,6 +1541,11 @@ section {
   max-width: none;
 }
 
+/* At reading size the keyword uses the deeper text teal. */
+.builds-method .accent-teal {
+  color: var(--teal-text);
+}
+
 /* "The psychology" note under each section intro. A small teal
    uppercase label over one italic line of behavioral science.
    This is the thread that separates the page from a tech catalog. */
@@ -1558,7 +1569,7 @@ section {
   font-size: 0.65rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-text);
 }
 
 .psych-note em {
@@ -1607,13 +1618,13 @@ section {
 
 .builds-anchor-row a:hover {
   opacity: 1;
-  color: var(--teal);
+  color: var(--teal-text);
 }
 
 /* Current section highlight, set by the scroll spy in script.js. */
 .builds-anchor-row a.is-current {
   opacity: 1;
-  color: var(--teal);
+  color: var(--teal-text);
 }
 
 /* Anchored targets scroll to rest below the sticky header + menu
@@ -1692,7 +1703,7 @@ section {
   font-weight: 400;
   font-size: 1.1rem;
   line-height: 1.35;
-  color: var(--teal);
+  color: var(--teal-text);
   max-width: none;
 }
 
@@ -1773,7 +1784,7 @@ section {
   font-size: 0.62rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-text);
   margin-bottom: 0.25rem;
 }
 
@@ -1891,7 +1902,7 @@ section {
   font-family: 'Switzer', system-ui, sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
-  color: var(--teal);
+  color: var(--teal-text);
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 4px;
@@ -2003,7 +2014,7 @@ section {
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 0.04em;
-  color: var(--teal);
+  color: var(--teal-text);
   min-width: 1.6rem;
 }
 
