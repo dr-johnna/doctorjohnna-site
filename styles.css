@@ -1810,9 +1810,11 @@ section {
   gap: var(--space-4);
 }
 
-/* Two wide up top, one full-width below (3 items). */
+/* Two equal cards up top, one full-width below (3 items).
+   Equal columns on purpose: cards carry same-size screenshots,
+   and unequal columns make the images render at different sizes. */
 .exhibit-grid-21 {
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .exhibit-grid-21 > :nth-child(3) {
