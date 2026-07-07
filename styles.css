@@ -1618,13 +1618,13 @@ section {
 
 .builds-anchor-row a:hover {
   opacity: 1;
-  color: var(--teal-text);
+  color: var(--teal);
 }
 
 /* Current section highlight, set by the scroll spy in script.js. */
 .builds-anchor-row a.is-current {
   opacity: 1;
-  color: var(--teal-text);
+  color: var(--teal);
 }
 
 /* Anchored targets scroll to rest below the sticky header + menu
@@ -1904,7 +1904,7 @@ section {
   font-family: 'Switzer', system-ui, sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
-  color: var(--teal-text);
+  color: var(--teal);
   text-decoration: underline;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 4px;
