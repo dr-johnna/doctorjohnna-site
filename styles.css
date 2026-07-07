@@ -1976,6 +1976,7 @@ section {
 
 .shot-img {
   width: 100%;
+  max-width: 34rem;
   height: auto;
   border: 1px solid var(--ink);
   border-radius: 2px;
