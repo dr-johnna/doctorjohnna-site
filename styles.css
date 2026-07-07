@@ -2398,3 +2398,201 @@ section {
     transform: none;
   }
 }
+
+
+/* ============================================================
+   18. ANNOUNCEMENT BAR + OFFER LADDER (added July 2026)
+   The announcement bar carries one time-sensitive line sitewide.
+   The offer ladder is the Work With Me sales layout: every offer,
+   every price, stacked in client-journey order.
+   ============================================================ */
+
+/* --- Announcement bar (above the header) --- */
+.announce-bar {
+  background: var(--ink);
+  color: var(--cream);
+  text-align: center;
+  padding: 0.6rem var(--section-pad-x);
+  font-size: var(--type-small);
+}
+
+.announce-bar a {
+  color: var(--cream);
+  border-bottom: 1px solid var(--yellow);
+  padding-bottom: 1px;
+  transition: color var(--transition-fast);
+}
+
+.announce-bar a:hover {
+  color: var(--yellow);
+}
+
+.announce-bar .accent-yellow {
+  font-weight: 500;
+}
+
+/* --- Path preview grid (homepage) --- */
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.path-card {
+  background: var(--cream);
+  border: var(--hairline) solid oklch(0.16 0.005 80 / 0.15);
+  padding: var(--space-5) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.path-step {
+  font-size: var(--type-label);
+  letter-spacing: 0.08em;
+  color: var(--teal-text);
+  font-weight: 500;
+}
+
+.path-card h3 {
+  font-size: var(--type-subhead);
+  line-height: 1.25;
+}
+
+.path-price {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.35rem;
+}
+
+.path-card p {
+  font-size: var(--type-small);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .path-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .path-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Offer ladder (Work With Me) --- */
+.offers {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.offer-card {
+  background: var(--cream);
+  border: var(--hairline) solid oklch(0.16 0.005 80 / 0.18);
+  padding: var(--space-6) var(--space-5);
+}
+
+/* One featured offer per season. Teal frame plus a badge. */
+.offer-featured {
+  border: 2px solid var(--teal);
+  position: relative;
+}
+
+.offer-badge {
+  position: absolute;
+  top: -0.8rem;
+  left: var(--space-5);
+  background: var(--ink);
+  color: var(--yellow);
+  font-size: var(--type-label);
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.85rem;
+  border-radius: var(--radius-pill);
+}
+
+.offer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.offer-step {
+  font-size: var(--type-label);
+  letter-spacing: 0.08em;
+  color: var(--teal-text);
+  font-weight: 500;
+}
+
+.offer-price {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+.offer-price small {
+  font-family: 'Switzer', system-ui, sans-serif;
+  font-size: var(--type-small);
+  color: oklch(0.16 0.005 80 / 0.65);
+}
+
+.offer-name {
+  font-size: var(--type-subhead);
+  margin-bottom: var(--space-1);
+}
+
+.offer-format {
+  font-size: var(--type-small);
+  color: oklch(0.16 0.005 80 / 0.65);
+  margin-bottom: var(--space-3);
+}
+
+.offer-desc {
+  line-height: 1.55;
+  margin-bottom: var(--space-3);
+}
+
+/* "This is for you if" line: the self-selection cue that lowers
+   cognitive load. One sentence per card, italic serif. */
+.offer-fit {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  margin-bottom: var(--space-4);
+}
+
+.offer-card .pill-cta {
+  align-self: flex-start;
+}
+
+.offer-note {
+  font-size: var(--type-small);
+  margin-top: var(--space-3);
+  color: oklch(0.16 0.005 80 / 0.65);
+}
+
+/* --- Quick-start guide rows (Work With Me hero) --- */
+.start-guide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+  font-size: var(--type-lead);
+}
+
+.start-guide a {
+  border-bottom: 1px solid var(--teal);
+  padding-bottom: 1px;
+}
+
+.start-guide a:hover {
+  color: var(--teal-text);
+}
