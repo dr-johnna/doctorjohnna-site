@@ -7,7 +7,7 @@ You are working with Dr. Johnna Richardson, PhD, Business Strategist and AI Cons
 **1. Identity Brand AI Studio — Free**
 Skool community at brandstudio.drjohnna.co. The front door of the entire ecosystem. Community, connection, and the starting place for The Dreamer and The Rebuilder avatars.
 
-**2. The AI Identity Advantage Workshop — $37**
+**2. The Identity Advantage in the AI Era Workshop — $37**
 Live 90-minute Zoom workshop with lifetime replay (workshop.drjohnna.co). First ran July 1, 2026. Includes $385 in tools: three Claude Skills, a full prompt library, and a 7-day starter plan. Paid entry point. Companion workbook lives at advantage.drjohnna.co.
 
 **3. Free Masterclass — Free, 1 hour**

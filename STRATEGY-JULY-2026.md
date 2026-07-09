@@ -83,7 +83,7 @@ The homepage gets one job: move visitors onto the ladder. Not a brochure, not a 
 > **The Path (dark)**
 > Label: THE PATH
 > 1. Start in the Studio. Free community, real conversation, your starting point. → brandstudio.drjohnna.co
-> 2. Clarify your identity brand. The AI Identity Advantage Workshop, $37, replay included with $385 in tools. → workshop.drjohnna.co
+> 2. Clarify your identity brand. The Identity Advantage in the AI Era Workshop, $37, replay included with $385 in tools. → workshop.drjohnna.co
 > 3. Build the engine. The Aligned Business Accelerator, eight weeks live. Identity brand, messaging, signature framework, and a content engine built in Claude. → aligned.drjohnna.co
 > Quiet line beneath: Beyond the Accelerator, The Legacy Collective and The Private Advisory go deeper. Those begin with a conversation, not a checkout page.
 
