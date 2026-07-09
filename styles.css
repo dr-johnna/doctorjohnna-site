@@ -108,11 +108,10 @@ ul {
   --teal: #53C5B3;
   --yellow: #F0F87C;
 
-  /* Deeper teal for small TEXT on cream/sand. The bright teal above
-     fails readability contrast for body-size text (1.7:1 on sand);
-     this one passes on both surfaces. Bright teal stays for graphics:
-     borders, arrows, large display numerals. */
-  --teal-text: #227065;
+  /* Per Dr. Johnna (July 2026): brand teal everywhere, no darker
+     variant. This token stays so older rules keep working, but it
+     resolves to the same brand color. */
+  --teal-text: #53C5B3;
 
   /* Spacing scale */
   --space-1: 0.25rem;
