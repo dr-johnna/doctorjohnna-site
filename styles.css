@@ -443,10 +443,13 @@ section {
 .hero-line-2 {
   font-family: 'Switzer', system-ui, sans-serif;
   font-weight: 900;
-  font-size: var(--type-hero);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
+  /* Half the hero size: this line runs long, so it reads as a
+     supporting statement rather than competing with line one. */
+  font-size: calc(var(--type-hero) * 0.5);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--teal);
+  margin-top: var(--space-2);
 }
 
 .hero-line-3 {
@@ -2546,7 +2549,7 @@ section {
 
 .offer-name {
   font-size: var(--type-subhead);
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-3);
 }
 
 .offer-format {
